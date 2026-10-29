@@ -8,6 +8,7 @@
  Versão atual: v68
  Histórico:
    v68 (res_v68.html): PARTE 7 (vozes). (1) Pasta vozes/ gerada na Arena IA e integrada: 53 mp3 (Pen 5, Emmy 18, inimigos 28; c1_inimigo_014 "Argh... porra..." foi bloqueada pelo filtro e FICA PENDENTE, o jogo ignora arquivo ausente). (2) Legendas da Emmy atualizadas para o texto realmente falado (005,006,007,009,010,011,012,015,017; "inútil" saiu). (3) VOZES DOS INIMIGOS (S.vox em S.tick, SEM legenda na tela): desconfiado, procurando, alerta, corpo achado, dor, morte, cobertura dos atiradores, brutos, civil fugindo, horda e ilha; volume cai com a distância; recarga global 1,3 s e por inimigo. Cada inimigo tem tipo de voz fixo A/B/E (C=bruto, D=fugitivo). (4) Bíblia: LISTA DE FALAS com os 29 códigos de inimigo e textos finais.
+  v69 (res_v69.html): CORREÇÕES do Capítulo 1. (1) Cartucho do bolso agora SEMPRE entra: se a pistola ainda tem pente dentro (cheio, com sobra ou vazio), o antigo é ejetado e cai com as balas que restavam, e o novo encaixa; encaixe também mais folgado. (2) Pistola pega com qualquer mão, mesmo com faca ou objeto na outra mão (o layout espelha e leva faca/objeto junto). (3) Andar durante o corpo a corpo: o hit-stop não congela mais o movimento. (4) Esconderijos novos: ~44 peças no pasto (muros, containers, pilhas de caixas, fardos) e 6 na base, fora de rotas e munição. (5) Corrida: balançar de braços bem mais sensível e vale com uma mão ocupada (pistola). (7) Gramado mais verde, armas mais pretas, sangue mais vermelho (e que escurece menos). (6) Cores: exposição, luz ambiente e sol menores, saturação e contraste maiores, névoa e reflexo do céu mais azuis.
   v67 (res_v67.html): PARTE 6 (caça a bugs). (1) BUG GRAVE: no módulo STORY a constante ST=4 (passo do terreno) escondia o objeto global ST (furtivo): quebrava holofotes (S.lit virava NaN, nunca detectavam), a IA da Emmy ao atirar e o bloco de inimigos que reagem à Emmy (TypeError em S.tick). Renomeada para TS. (2) debug desligado por padrão (só liga com #debug no endereço; o botão 'próx. ponto' e as teclas 1..6 também só nesse modo). (3) Respawn no helicóptero não reabre a IA da Emmy (S.es). (4) Som do rotor some no cartão final. (5) Inimigos mortos há mais de 30 s e a mais de 75 m ficam ocultos (desempenho). (6) +2 caixas de munição perto da colina. (7) Rótulo do menu atualizado.
    v66 (res_v66.html): PARTE 5 CONCLUÍDA (+20%). (1) EMMY A BORDO: ela agora aparece dentro do helicóptero (lado direito da cabine, presa ao helicóptero a cada quadro) em vez de sumir. (2) CENA FINAL: depois da 4ª onda o helicóptero segue para o oeste sobre o mar; a Emmy fala (c1_emmy_013 já existia e agora c1_emmy_014..018) revelando coisas sobre a facção, aliviada mas sem agradecer, e a Pen fecha com c1_pen_005. (3) FIM: a tela escurece e aparece o cartão 'FIM DO CAPÍTULO 1 · Emmy resgatada' (recarregar a página para jogar de novo). (4) Removido o aviso provisório 'Fim do trecho jogável atual'. SUPOSIÇÃO: o conteúdo das revelações da Emmy (operação grande e treinada, ilha é só uma de várias bases com mapas, alguém de fora bancando e por isso a prenderam viva) foi inventado por mim, a bíblia só diz 'algumas coisas sobre a facção'; confirmar ou trocar.
   v65 (res_v65.html): PARTE 5 (~80%, +30%). TIROTEIO SOBRE A ILHA. (1) Ao chegar na ilha o helicóptero passa a circular em volta dela (raio 88 m, altura 26 m, ~21 m/s, inclinado na curva) com você na cabine; munição reabastecida (+48) e +24 a cada onda. (2) 4 ONDAS: 1) 4 atiradores a pé na estrada em anel; 2) 2 atiradores + 2 carros (gol, civic) que aceleram atrás de você e emparelham; 3) 4 a pé + 2 carros (mustang, lambo); 4) 5 a pé. Cada onda dura no máximo 45 s (se sobrar gente eles recuam). (3) ACERTAR: tiros da pistola acertam alvos por esfera (homem 70 de vida = 2 tiros, carro 130 = 4 tiros), com sangue/faíscas; carro destruído vira bola de fogo escura e para; homem cai. (4) ELES ATIRAM: inimigos em alcance (até 90 m) atiram em você com rastro (1 tiro a cada ~0,2 s no máximo no conjunto, chance 7% a 26% conforme a distância, dano 4-7), usando o sangue na tela da v62. (5) Morrer durante o tiroteio recomeça o tiroteio no helicóptero (não volta ao topo). (6) Falas novas da Emmy c1_emmy_011 (carros), 012 (você com pouca vida), 013 (fim). (7) Ao limpar a 4ª onda o helicóptero se afasta para o oeste e aparece 'Fim do trecho jogável atual'. Falta da Parte 5: cena final com as revelações da Emmy (a Emmy ainda não aparece a bordo) e acabamento.
@@ -238,7 +239,7 @@
  c1_inimigo_029 | E | "Não deixa eles escaparem da ilha, caralho!" | início do tiroteio na ilha
  ===== FIM DA BÍBLIA DO MODO HISTÓRIA =====
 -->
-<meta name="res-version" content="v68">
+<meta name="res-version" content="v69">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <title>RES v68</title>
 <style>
@@ -298,7 +299,7 @@ $('tb').onclick=()=>{term.style.display=term.style.display==='block'?'none':'blo
 addEventListener('keydown',e=>{if(e.key==='`')$('tb').click()});
 addEventListener('error',e=>log('ERRO: '+e.message+' ('+(e.filename||'').split('/').pop()+':'+e.lineno+')','e'));
 addEventListener('unhandledrejection',e=>log('PROMISE: '+(e.reason&&e.reason.message||e.reason),'e'));
-const RES_VERSION='v68';const STORY={on:false,cfg:{walk:1},gy:()=>0,respawn(){},tick(){},clamp(){},start(){}};let bootMode=null;const XR_FOVEATION=.5;log('RES '+RES_VERSION+' · Three.js r'+T.REVISION+' carregado');
+const RES_VERSION='v69';const STORY={on:false,cfg:{walk:1},gy:()=>0,respawn(){},tick(){},clamp(){},start(){}};let bootMode=null;const XR_FOVEATION=.5;log('RES '+RES_VERSION+' · Three.js r'+T.REVISION+' carregado');
 let A,world,TR,ptr={},bodies=[],ready=false,booting=null,HT,HQ,HV,HZ;
 /* ---------- carrega Ammo.js ---------- */
 function loadAmmo(){const u=['https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/ammo.wasm.js','https://cdn.jsdelivr.net/npm/ammo.js@0.0.10/ammo.js'];
@@ -315,11 +316,11 @@ function loadAmmo(){const u=['https://cdn.jsdelivr.net/npm/three@0.128.0/example
 const renderer=new T.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.shadowMap.autoUpdate=false;renderer.shadowMap.needsUpdate=true;let shAlt=0;
-renderer.outputEncoding=T.sRGBEncoding;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=.95;
+renderer.outputEncoding=T.sRGBEncoding;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=.74;
 T.ShaderChunk.tonemapping_fragment=`
 #if defined( TONE_MAPPING )
  gl_FragColor.rgb = toneMapping( gl_FragColor.rgb );
- { float vl_=dot(gl_FragColor.rgb,vec3(.2126,.7152,.0722)); gl_FragColor.rgb=clamp(mix(vec3(vl_),gl_FragColor.rgb,1.55),0.,1.); gl_FragColor.rgb=pow(gl_FragColor.rgb,vec3(1.14)); }
+ { float vl_=dot(gl_FragColor.rgb,vec3(.2126,.7152,.0722)); gl_FragColor.rgb=clamp(mix(vec3(vl_),gl_FragColor.rgb,2.05),0.,1.); gl_FragColor.rgb=pow(gl_FragColor.rgb,vec3(1.24)); }
 #endif`;renderer.xr.enabled=true;
 document.body.prepend(renderer.domElement);
 const scene=new T.Scene(),camera=new T.PerspectiveCamera(70,innerWidth/innerHeight,.02,150),rig=new T.Group();
@@ -334,12 +335,12 @@ const sky=cv(1024,512,(g,w,h)=>{const gr=g.createLinearGradient(0,0,0,h);gr.addC
  for(let i=0;i<46;i++){const cx=Math.random()*w,cy=h*(.1+Math.random()*.32),rr=26+Math.random()*60;for(let k=0;k<6;k++){const x=cx+(Math.random()-.5)*rr*2.2,y=cy+(Math.random()-.5)*rr*.5,r=rr*(.5+Math.random()*.6),cg=g.createRadialGradient(x,y,0,x,y,r);cg.addColorStop(0,'rgba(255,255,255,.55)');cg.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=cg;g.fillRect(x-r,y-r,r*2,r*2)}}
  const rg=g.createRadialGradient(85,120,2,85,120,130);rg.addColorStop(0,'#ffffff');rg.addColorStop(.12,'#fff6d0');rg.addColorStop(1,'rgba(255,240,180,0)');g.fillStyle=rg;g.fillRect(0,0,w,h)});
 sky.mapping=T.EquirectangularReflectionMapping;scene.background=sky;
-const skyEc=document.createElement('canvas');skyEc.width=1024;skyEc.height=512;{const g=skyEc.getContext('2d');g.drawImage(sky.image,0,0);g.globalCompositeOperation='multiply';g.fillStyle='rgb(150,168,205)';g.fillRect(0,0,1024,512)}
+const skyEc=document.createElement('canvas');skyEc.width=1024;skyEc.height=512;{const g=skyEc.getContext('2d');g.drawImage(sky.image,0,0);g.globalCompositeOperation='multiply';g.fillStyle='rgb(118,136,180)';g.fillRect(0,0,1024,512)}
 const skyE=new T.CanvasTexture(skyEc);skyE.encoding=T.sRGBEncoding;skyE.mapping=T.EquirectangularReflectionMapping;
 scene.environment=new T.PMREMGenerator(renderer).fromEquirectangular(skyE).texture;
-scene.fog=new T.FogExp2(0x9cc8f0,.0065);
-scene.add(new T.HemisphereLight(0xbcd8ff,0x8a7a58,.7));
-const sun=new T.DirectionalLight(0xffe6c0,2.8);sun.position.set(-14,18,-8);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);
+scene.fog=new T.FogExp2(0x7aaee6,.0065);
+scene.add(new T.HemisphereLight(0xa8c8ff,0x6e6040,.45));
+const sun=new T.DirectionalLight(0xffe0b0,2.4);sun.position.set(-14,18,-8);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);
 Object.assign(sun.shadow.camera,{left:-32,right:32,top:32,bottom:-32,near:1,far:70});sun.shadow.bias=-.0004;scene.add(sun);
 /* ---------- geometria ---------- */
 const rbox=(w,h,d,r=.004)=>{const x=w/2-r,y=h/2-r,s=new T.Shape();s.moveTo(-x,-y);s.lineTo(x,-y);s.lineTo(x,y);s.lineTo(-x,y);s.closePath();const g=new T.ExtrudeGeometry(s,{depth:d-2*r,bevelEnabled:true,bevelSize:r,bevelThickness:r,bevelSegments:3,curveSegments:4});g.translate(0,0,-(d-2*r)/2);return g};
@@ -863,7 +864,7 @@ function bStain(L,v,R,k){const P=L.B.p.array,adj=L.B.adj,x0=P[v*3],y0=P[v*3+1],z
   if(f>.01){L.am[u]=1-(1-L.am[u])*(1-Math.min(1,f));L.tv[u]=L.t;L.sv.add(u)}
   for(const w of adj[u])if(!seen.has(w)){const ex=P[w*3]-x0,ey=P[w*3+1]-y0,ez=P[w*3+2]-z0;if(ex*ex+ey*ey+ez*ez<R*R){seen.add(w);q.push(w)}}}
  L.cd=true;L.m.visible=true}
-function bCol(L){const c=L.cb.array,c0=L.c0;for(const u of L.sv){const a=L.am[u],s=a*a*(3-2*a)*.92,k=Math.min(1,(L.t-L.tv[u])/60),r=.5-.3*k,g=.025-.01*k;c[u*3]=c0[u*3]*(1-s)+r*s;c[u*3+1]=c0[u*3+1]*(1-s)+g*s;c[u*3+2]=c0[u*3+2]*(1-s)+g*s}L.cb.needsUpdate=true}
+function bCol(L){const c=L.cb.array,c0=L.c0;for(const u of L.sv){const a=L.am[u],s=a*a*(3-2*a)*.92,k=Math.min(1,(L.t-L.tv[u])/60),r=.9-.3*k,g=.02-.008*k;c[u*3]=c0[u*3]*(1-s)+r*s;c[u*3+1]=c0[u*3+1]*(1-s)+g*s;c[u*3+2]=c0[u*3+2]*(1-s)+g*s}L.cb.needsUpdate=true}
 /* furo de bala na pele (corpo): anel vermelho-escuro + miolo preto, quadrados reservados */
 function bHole(L,sh){const v=sh.v,c=sh.bp,F=bFr(L,v,Math.random()*6.28),qa=BCAP+((L.hi++)%24)*2;bQ(L,qa,v,c,F,.0105,.0105,.0038);bFix(L,qa,.34,.03,.03);bQ(L,qa+1,v,c,F,.0058,.0058,.005);bFix(L,qa+1,.02,.004,.004);L.m.visible=true}
 /* talho de faca (corpo): fenda escura com borda rosada, na direção do golpe */
@@ -891,7 +892,7 @@ function bloodL(o,dt){const L=o.bl;if(!L||(!L.n&&!L.runs.length&&!L.sv.size))ret
    if(r.vol<=0){r.done=true;bBlot(L,b,.0035,1,1);if(r.q>.25&&Math.random()<.5)bDrip(o,b,r.q)}else if(Math.random()<.08)r.cd=.4+Math.random()*1.2}   // para e anda: o sangue empaca na pele
   else bStrip(L,r.hd,a,b,r.f,r.hw)}
  for(let i=L.runs.length-1;i>=0;i--)if(L.runs[i].done&&L.runs.length>12)L.runs.splice(i,1);
- if((L.ct+=dt)>.6){L.ct=0;const u=Math.min(L.n,BCAP),c=L.col.array;for(let q=0;q<u;q++){if(L.fx[q])continue;const k=Math.min(1,(L.t-L.qt[q])/40),r=.62-.4*k,g=.03-.012*k;for(let j=0;j<4;j++){const o2=q*12+j*3;c[o2]=r;c[o2+1]=g;c[o2+2]=g}}L.dirty=true;if(L.sv.size)bCol(L)}   // sangue fresco brilha e vai escurecendo
+ if((L.ct+=dt)>.6){L.ct=0;const u=Math.min(L.n,BCAP),c=L.col.array;for(let q=0;q<u;q++){if(L.fx[q])continue;const k=Math.min(1,(L.t-L.qt[q])/40),r=.95-.3*k,g=.025-.01*k;for(let j=0;j<4;j++){const o2=q*12+j*3;c[o2]=r;c[o2+1]=g;c[o2+2]=g}}L.dirty=true;if(L.sv.size)bCol(L)}   // sangue fresco brilha e vai escurecendo
  if(L.dirty){L.dirty=false;L.geo.groups[0].count=Math.min(L.n,BCAP)*6;for(const a of[L.pos,L.nor,L.col,L.si,L.sw])a.needsUpdate=true}}
 /* acerto: acha a pele de verdade no caminho do tiro/golpe (cabeça: raio nas esferas; corpo: vértices já com o esqueleto aplicado) */
 const RC=new T.Raycaster(),hQ=new T.Vector3(),NM=new T.Matrix3(),_bm=new T.Matrix4(),Z3=new T.Vector3(0,0,1);
@@ -981,7 +982,7 @@ function bleedAt(o,p,dir,kind,pw,sh){const L=o.bl;if(!L)return null;sh=sh||skinH
 
 /* sangue / partículas */
 const bm=M(0x5c0505,.12),spm=new T.MeshBasicMaterial({color:0xffc060}),pg=new T.SphereGeometry(.011,6,5),parts=[];
-const stMat=new T.MeshStandardMaterial({color:0x4a0404,roughness:.12,polygonOffset:true,polygonOffsetFactor:-2}),sg=new T.CircleGeometry(1,16),stains=[],holes=[],pools=[];
+const stMat=new T.MeshStandardMaterial({color:0x8e0606,roughness:.12,polygonOffset:true,polygonOffsetFactor:-2}),sg=new T.CircleGeometry(1,16),stains=[],holes=[],pools=[];
 const hoM=new T.MeshBasicMaterial({color:0x0a0a0a,polygonOffset:true,polygonOffsetFactor:-3}),hoG=new T.CircleGeometry(.02,10);
 function burst(p,n,cnt,blood){if(blood)cnt=Math.max(2,Math.round(cnt*.3));for(let i=0;i<cnt;i++){const m=new T.Mesh(pg,blood?bm:spm);m.position.copy(p);m.scale.setScalar(blood?.22+Math.random()*.5:.6+Math.random()*1.4);
  const v=V(Math.random()-.5,Math.random()-.1,Math.random()-.5).multiplyScalar(blood?1.8:2).addScaledVector(n,blood?2.2:2.5);parts.push({m,v,blood,l:.35});scene.add(m)}}
@@ -1034,22 +1035,22 @@ function grabBody(h,o){const c=ctl[h];c.updateWorldMatrix(true,false);o.mesh.upd
 function freeBody(o,v){o.held=null;o.b.setCollisionFlags(o.b.getCollisionFlags()&~2);o.b.setActivationState(o.dummy?4:1);o.b.activate(true);
  if(v){HV.setValue(v.x,v.y,v.z);o.b.setLinearVelocity(HV)}else o.b.setLinearVelocity(HZ);o.b.setAngularVelocity(HZ);if(o.ttl!==undefined)o.ttl=25}
 function dropAll(){['left','right'].forEach(h=>{const hd=HD[h].held;if(hd&&hd.type==='body')freeBody(hd.o,null);if(hd&&hd.type==='knife')knifeHome();if(hd&&(hd.type==='sg'||hd.type==='fore'||hd.type==='shg'||hd.type==='fgrp'))sgBack();if(hd&&(hd.type==='rf'||hd.type==='rfore'))rfBack();if(hd&&(hd.type==='ak'||hd.type==='afore'))akBack();if(hd&&hd.type==='human')freeHuman(hd);HD[h].held=null;HD[h].grip=false})}
-function takeMag(h){const q=new T.Quaternion();ctl[h].getWorldQuaternion(q);const p=hpos(h,new T.Vector3()).add(V(0,-.02,-.03).applyQuaternion(q));const o=makeMag(p,q,pocket.pop());o.noIns=.5;grabBody(h,o)}
+function takeMag(h){const q=new T.Quaternion();ctl[h].getWorldQuaternion(q);const p=hpos(h,new T.Vector3()).add(V(0,-.02,-.03).applyQuaternion(q));const o=makeMag(p,q,pocket.pop());o.noIns=.15;grabBody(h,o)}
 function pullMag(h){const p=gun.localToWorld(V(0,-.1,.025)),q=new T.Quaternion();gun.getWorldQuaternion(q);G.magIn=false;magBase.visible=false;const o=makeMag(p,q,G.mag);G.mag=0;o.noIns=.6;grabBody(h,o)}
 function reach(o,p){if(o.human)return partDist(o,p);const m=o.mesh;
  if(o.dummy){_w.set(0,.6,0).applyQuaternion(m.quaternion);_a.copy(m.position).add(_w);_b.copy(m.position).sub(_w);_w.copy(_b).sub(_a);
   const t=Math.max(0,Math.min(1,_p2.copy(p).sub(_a).dot(_w)/_w.lengthSq()));_p2.copy(_a).addScaledVector(_w,t);return Math.max(0,p.distanceTo(_p2)-.22)}
  return Math.max(0,p.distanceTo(m.position)-(o.rad||.3))}
-function setMir(on){if(on===MIR)return;MIR=on;const a=ctl.left;ctl.left=ctl.right;ctl.right=a;const q=prev.left;prev.left=prev.right;prev.right=q;delete pp.left;delete pp.right;HD.left.last=HD.right.last=null;{const a1=viewR.children[0],a2=viewL.children[0];if(a1)a1.scale.x=on?-1:1;if(a2)a2.scale.x=on?-1:1}place();updateBody(0)}
+function setMir(on){if(on===MIR)return;MIR=on;const a=ctl.left;ctl.left=ctl.right;ctl.right=a;const q=prev.left;prev.left=prev.right;prev.right=q;delete pp.left;delete pp.right;HD.left.last=HD.right.last=null;{const a=HD.left.held;HD.left.held=HD.right.held;HD.right.held=a;const g=HD.left.grip;HD.left.grip=HD.right.grip;HD.right.grip=g;for(const k of['left','right']){const x=HD[k].held;if(x&&x.o)x.o.held=k}if(kEq)kHd=kHd==='left'?'right':'left'}{const a1=viewR.children[0],a2=viewL.children[0];if(a1)a1.scale.x=on?-1:1;if(a2)a2.scale.x=on?-1:1}place();updateBody(0)}
 /* v44: qualquer arma/faca com qualquer mão. Se a mão que apertou o grip não pegou nada e as duas estão livres, tenta com o layout ESPELHADO (coldre, bolso, bainha e armas nas costas trocam de lado; a mão vira a "mão principal"). */
-function tryGrab(h){const free=!HD.left.held&&!HD.right.held&&gunState!=='held'&&sgState!=='held'&&rfState!=='held'&&akState!=='held'&&!kEq;
+function tryGrab(h){const hk=k=>{const x=HD[k].held;return !x||x.type==='body'||x.type==='knife'};const free=hk('left')&&hk('right')&&gunState!=='held'&&sgState!=='held'&&rfState!=='held'&&akState!=='held';
  tryGrab0(h);if(!free||!isXR()||HD[h].held)return;
  setMir(!MIR);const g=h==='left'?'right':'left';tryGrab0(g);if(!HD[g].held)setMir(!MIR)}
 function tryGrab0(h){const hp=hpos(h,new T.Vector3());if(sgTry(h,hp)||rfTry(h,hp)||akTry(h,hp))return;
  if(h==='right'){
-  if(gunState==='holstered'&&hp.distanceTo(holsterPos)<.28)return grabGun(h);
-  if(gunState==='benched'&&hp.distanceTo(gun.position)<.22)return grabGun(h);
-  if(gunState==='dropped'&&gunBody&&hp.distanceTo(gun.localToWorld(V(0,-.02,-.075)))<.3)return grabGun(h)}
+  if(gunState==='holstered'&&hp.distanceTo(holsterPos)<.36)return grabGun(h);
+  if(gunState==='benched'&&hp.distanceTo(gun.position)<.34)return grabGun(h);
+  if(gunState==='dropped'&&gunBody&&hp.distanceTo(gun.localToWorld(V(0,-.02,-.075)))<.4)return grabGun(h)}
  if(h==='left'&&gunState==='held'&&G.magIn&&hp.distanceTo(gun.localToWorld(V(0,-.1,.025)))<.13)return pullMag(h);
  if(hp.distanceTo(pouchPos)<.25&&pocket.length&&gunState!==null)return takeMag(h);
  let best=null,bd=1e9;for(const o of bodies){if(o.held||o.nograb||o.isGun||(o.kind==='knife'&&kEq))continue;const d=reach(o,hp);if(d<bd){bd=d;best=o}}
@@ -1071,7 +1072,7 @@ function xrGrip(dt,gDown,gUp){updateBody(dt);
  for(const k of['left','right']){const c=ctl[k];if(!c)continue;c.getWorldPosition(_p);const hd=HD[k];if(hd.last){_v.copy(_p).sub(hd.last).divideScalar(dt);hd.vel.lerp(_v,.4)}else hd.last=new T.Vector3();hd.last.copy(_p)}
  gUp.forEach(h=>release(h));gDown.forEach(h=>{if(ctl[h]&&!HD[h].held)tryGrab(h)});
  for(const k of['left','right']){const hd=HD[k].held;if(hd&&hd.type==='human'){ctl[k].getWorldPosition(_p);setBT(hd.a,_p,qI)}if(!hd||hd.type!=='body')continue;const o=hd.o;updateHeld(k,o);
-  if(o.kind==='mag'&&gunState==='held'&&!G.magIn&&o.noIns<=0&&(gun.updateWorldMatrix(true,false),o.mesh.position.distanceTo(gun.localToWorld(_w.set(0,-.1,.025))))<.15){insert(o.ammo);HD[k].held=null;remove(o);haptic(k,.6,50)}}}
+  if(o.kind==='mag'&&gunState==='held'&&o.noIns<=0&&(gun.updateWorldMatrix(true,false),gun.localToWorld(_w.set(0,-.1,.025)),o.mesh.position.distanceTo(_w)<.28||hpos(k,_v).distanceTo(_w)<.22)){if(G.magIn)eject();insert(o.ammo);HD[k].held=null;remove(o);haptic(k,.6,50)}}}
 /* ---------- v6: faca, bancada ---------- */
 let kHd='left',kEq=false,ksh=true,kBn=false,nearK=null,kBody=null,mob=0,near=0,ks=0,kc=2,hs=0,shake=0,bloodA=0,kInit=0,kW=0;
 const TN=14,trail=[],benchP=V(0,0,-1.5),benchGun=V(benchP.x-2.55,.948,benchP.z),sheathPos=V(0,0,0),pTip=V(0,0,0),bTip=V(0,0,0),bBase=V(0,0,0),
@@ -1285,7 +1286,7 @@ addEventListener('devicemotion',e=>{const a=e.acceleration;if(!a)return;accel+=(
 function resetAll(){if(STORY.on)return STORY.respawn();dropAll();PL.hp=100;PL.t=0;meatClear();dummies.forEach(o=>{if(o.det!==undefined)ini(o)});ST.tog=false;if(ST.btn)ST.btn.style.background='#fff2';bodies.filter(o=>o.kind==='mag').forEach(remove);limbPieces.splice(0).forEach(p=>{p.mesh.geometry.dispose();remove(p)});dummies.concat(props).forEach(o=>{o.b.setCollisionFlags(o.b.getCollisionFlags()&~2);o.b.setActivationState(o.dummy?4:1);reset(o)});stains.splice(0).forEach(s=>scene.remove(s));holes.splice(0).forEach(h=>h.parent&&h.parent.remove(h));pools.length=0;pocket.length=0;for(let i=0;i<6;i++)pocket.push(12);G.mag=12;G.ch=true;G.magIn=true;magBase.visible=true;knifeHome();sgReset();rfReset();akReset();benchAll()}
 
 /* ---------- v17: ESPINGARDA PUMP de duas mãos (nas costas; saque/guarda no topo da cabeça) ---------- */
-const mBlue=new T.MeshStandardMaterial({color:0x14171b,metalness:.88,roughness:.36,envMapIntensity:1.3}),mRec=new T.MeshStandardMaterial({color:0x0d0e10,metalness:.6,roughness:.48,envMapIntensity:1}),
+const mBlue=new T.MeshStandardMaterial({color:0x050607,metalness:.7,roughness:.42,envMapIntensity:.55}),mRec=new T.MeshStandardMaterial({color:0x030304,metalness:.5,roughness:.5,envMapIntensity:.5}),
  mSteel=new T.MeshStandardMaterial({color:0x9aa0a6,metalness:1,roughness:.3,envMapIntensity:1.4}),mRub=M(0x0b0b0c,.95,0);
 function grainT(vert){return cv(vert?128:512,vert?512:128,(g,w,h)=>{g.fillStyle='#8a5530';g.fillRect(0,0,w,h);for(let i=0;i<300;i++){const a=.05+Math.random()*.16;g.strokeStyle=Math.random()<.6?`rgba(48,20,6,${a})`:`rgba(200,135,80,${a*.8})`;g.lineWidth=.6+Math.random()*2;g.beginPath();
  if(vert){const x=Math.random()*w;g.moveTo(x,0);for(let y=0;y<=h;y+=64)g.lineTo(x+Math.sin(y*.02+i)*3+(Math.random()-.5)*2,y)}else{const y=Math.random()*h;g.moveTo(0,y);for(let x=0;x<=w;x+=64)g.lineTo(x,y+Math.sin(x*.02+i)*3+(Math.random()-.5)*2)}g.stroke()}})}
@@ -1609,7 +1610,7 @@ function rfReset(){rfBack();rfMag=5;rfCh=1;rfPocket=4;rfK=0;rfS=0}
 /* ---------- v21: AK-47 (fuzil de assalto: alcance bom, automática, ferida em rombo quase do tamanho da sniper) ---------- */
 const akWoodT=cv(256,128,(g,w,h)=>{const gr=g.createLinearGradient(0,0,0,h);gr.addColorStop(0,'#8a4a22');gr.addColorStop(.5,'#6e3517');gr.addColorStop(1,'#80411d');g.fillStyle=gr;g.fillRect(0,0,w,h);
  for(let i=0;i<70;i++){g.strokeStyle='rgba('+(30+Math.random()*30|0)+',12,4,'+(.12+Math.random()*.25)+')';g.lineWidth=.6+Math.random()*1.6;g.beginPath();const y=Math.random()*h;g.moveTo(0,y);g.bezierCurveTo(w*.3,y+(Math.random()-.5)*8,w*.6,y+(Math.random()-.5)*8,w,y+(Math.random()-.5)*5);g.stroke()}noise(g,w,h,1800,.12)}),
- mAkWood=new T.MeshStandardMaterial({map:akWoodT,roughness:.55,metalness:.02,envMapIntensity:.7}),mAkSt=new T.MeshStandardMaterial({color:0x2b2d30,metalness:.85,roughness:.5,envMapIntensity:1.1}),
+ mAkWood=new T.MeshStandardMaterial({map:akWoodT,roughness:.55,metalness:.02,envMapIntensity:.7}),mAkSt=new T.MeshStandardMaterial({color:0x08090a,metalness:.7,roughness:.5,envMapIntensity:.55}),
  mBake=M(0x6a2a10,.4,.08),mBkRib=M(0x4a1c09,.5,.05);
 const akl=new T.Group(),akbolt=new T.Group(),akMagG=new T.Group(),akmuz=new T.Object3D();
 (function(){const add=(geo,m,x,y,z,par,rx,ry,rz)=>{const o=new T.Mesh(geo,m);o.position.set(x,y,z);if(rx||ry||rz)o.rotation.set(rx||0,ry||0,rz||0);(par||akl).add(o);return o},cz=(r,l,s)=>new T.CylinderGeometry(r,r,l,s||18).rotateX(Math.PI/2),cx=(r,l)=>new T.CylinderGeometry(r,r,l,12).rotateZ(Math.PI/2);
@@ -2387,13 +2388,15 @@ function loop(t){{const xr0=isXR();renderer.shadowMap.needsUpdate=xr0?((shAlt^=1
     const busy={left:!!HD.left.held||(sgState==='held'||rfState==='held'||akState==='held'),right:!!HD.right.held||gunState==='held'||sgState==='held'||rfState==='held'||akState==='held'};
     for(const k of['left','right']){const c=ctl[k];SW.v[k]=0;SW.h[k].set(0,0,0);if(!c){delete pp[k];continue}
      SW.p.copy(c.position);if(pp[k]){if(!busy[k]){SW.d.copy(SW.p).sub(pp[k]).divideScalar(dt0).applyQuaternion(rig.quaternion);SW.d.y=0;SW.h[k].copy(SW.d);SW.v[k]=1}pp[k].copy(SW.p)}else pp[k]=SW.p.clone()}
-    let tg=0;if(SW.v.left&&SW.v.right){const ha=SW.h.left,hb=SW.h.right,dd=SW.t.copy(ha).sub(hb),dl=dd.length();if(dl>.05&&ha.dot(hb)<0&&Math.abs(dd.dot(SW.f))/dl>.3)tg=Math.min(ha.length(),hb.length())*2}
-    swing+=(tg-swing)*Math.min(1,dt0*(tg>swing?6:3));run=Math.min(4.5,Math.max(0,swing-.5)*1.6)}
+    let tg=0;{const fl=SW.v.left?SW.h.left.dot(SW.f):0,fr=SW.v.right?SW.h.right.dot(SW.f):0;
+     if(SW.v.left&&SW.v.right)tg=(Math.abs(fl)+Math.abs(fr))*(fl*fr<0?.95:.5);
+     else if(SW.v.left||SW.v.right)tg=Math.abs(SW.v.left?fl:fr)*1.1}
+    swing+=(tg-swing)*Math.min(1,dt0*(tg>swing?8:1.6));run=Math.min(3.6,Math.max(0,swing-.35)*2)}
    if(!RESCAR.on)xrGrip(dt,gDown,gUp)}
   else{mx=RESCAR.on?0:joy.x;my=RESCAR.on?0:joy.y;run=Math.min(4.5,Math.max(0,(accel-2)*.45));
    if(gyro)camera.quaternion.copy(gyroQ);else camera.quaternion.setFromEuler(eu.set(pitch,yaw,0,'YXZ'))}
   if(STORY.on&&!ropeHang)rig.position.y=STORY.gy(rig.position.x,rig.position.z);if(!ropeHang&&(STORY.on||rig.position.y<.05)&&Math.hypot(mx,my)>.15){camera.getWorldDirection(fw);fw.y=0;fw.normalize();rt.set(-fw.z,0,fw.x);const mag=Math.min(1,Math.hypot(mx,my)),spd=(STORY.on?STORY.cfg.walk:1)*mag*(1.1+(my<-.3?run*(1-.7*ST.cr):0))*(1-.45*ST.cr);
-   rig.position.addScaledVector(fw,-my*spd*dt).addScaledVector(rt,mx*spd*dt);if(STORY.on)STORY.clamp();else{rig.position.x=Math.max(-27,Math.min(27,rig.position.x));rig.position.z=Math.max(-27,Math.min(27,rig.position.z))}}
+   rig.position.addScaledVector(fw,-my*spd*dt0).addScaledVector(rt,mx*spd*dt0);if(STORY.on)STORY.clamp();else{rig.position.x=Math.max(-27,Math.min(27,rig.position.x));rig.position.z=Math.max(-27,Math.min(27,rig.position.z))}}
   kick=Math.max(0,kick-dt*7);slideT=Math.max(0,slideT-dt*9);
   slideG.position.z=(G.ch||G.mag>0||slideT>0?slideT*.032:.032);if(!G.ch&&G.mag===0&&G.magIn===true||(!G.ch&&slideT===0&&G.mag===0))slideG.position.z=.032;
   const base=xr?0:0;viewR.rotation.x=base+kick*.22;viewR.position.z+=0;if(gunState==='held')gun.position.z=kick*.025;
@@ -2473,7 +2476,7 @@ function terr(nx,nz2,x0,z0,st,hf,cf){const P=new Float32Array(nx*nz2*3),Co=new F
  for(let j=0;j<nz2-1;j++)for(let i=0;i<nx-1;i++){const a=j*nx+i,b=a+1,c=a+nx,d=c+1;I.push(a,c,b,b,c,d)}
  const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(P,3));g.setAttribute('color',new T.BufferAttribute(Co,3));g.setIndex(I);g.computeVertexNormals();
  const m=new T.Mesh(g,new T.MeshStandardMaterial({vertexColors:true,roughness:.95,flatShading:false}));m.receiveShadow=true;scene.add(m);return m}
-const colMain=(x,z,h,sl)=>{let r=.42,g=.55,b=.24;if(z<-200){r=.30;g=.66;b=.18}if(h<2.4){r=.8;g=.74;b=.55}if(sl>.5){r=.46;g=.43;b=.38}
+const colMain=(x,z,h,sl)=>{let r=.24,g=.64,b=.13;if(z<-200){r=.17,g=.74,b=.09}if(h<2.4){r=.8;g=.74;b=.55}if(sl>.5){r=.46;g=.43;b=.38}
  const d=ss(3.2,1.4,dPath(x,z));return[lp(r,.52,d),lp(g,.40,d),lp(b,.26,d)]};
 const IC=PT.ilha,hI=(x,z)=>30*Math.exp(-(((x-IC[0])**2+(z-IC[1])**2)/4900))-2.5;
 const colIsl=(x,z,h,sl)=>h<1.6?[.8,.74,.55]:sl>.45?[.46,.43,.38]:[.32,.55,.22];
@@ -2499,7 +2502,7 @@ S.build=()=>{
   if(Math.hypot(x-18,z+118)<40||Math.hypot(x-80,z+362)<80||Math.hypot(x+30,z-38)<22||Math.hypot(x+70,z+310)<20)continue;
   const sl=slope(x,z);if(sl>.3&&rk.length<70)rk.push([x,h,z,.6+R()*1.6,R()*6]);else if(sl<.3&&z>-200&&tr.length<150)tr.push([x,h,z,.8+R()*.7,R()*6])}
  function lerp2(a,b,t){return a+(b-a)*t}
- const trunk=new T.InstancedMesh(new T.CylinderGeometry(.18,.24,1.8,5),M(0x5a3d26,.9),tr.length),crown=new T.InstancedMesh(new T.ConeGeometry(1.7,4.4,6),M(0x2f6a2c,.85),tr.length),rock=new T.InstancedMesh(new T.IcosahedronGeometry(1,0),M(0x77746e,.95),rk.length);
+ const trunk=new T.InstancedMesh(new T.CylinderGeometry(.18,.24,1.8,5),M(0x5a3d26,.9),tr.length),crown=new T.InstancedMesh(new T.ConeGeometry(1.7,4.4,6),M(0x24801f,.85),tr.length),rock=new T.InstancedMesh(new T.IcosahedronGeometry(1,0),M(0x77746e,.95),rk.length);
  tr.forEach((t,i)=>{D.rotation.set(0,t[4],0);D.scale.setScalar(t[3]);D.position.set(t[0],t[1]+.9*t[3],t[2]);D.updateMatrix();trunk.setMatrixAt(i,D.matrix);D.position.y=t[1]+(1.8+2.2)*t[3];D.updateMatrix();crown.setMatrixAt(i,D.matrix)});
  rk.forEach((t,i)=>{D.rotation.set(t[4],t[4]*2,0);D.scale.set(t[3],t[3]*.7,t[3]);D.position.set(t[0],t[1]+.2,t[2]);D.updateMatrix();rock.setMatrixAt(i,D.matrix)});
  [trunk,crown,rock].forEach(m=>{m.frustumCulled=false;m.castShadow=false;scene.add(m)});
@@ -2552,6 +2555,19 @@ S.build=()=>{
   for(const[x,z]of[[10,-98],[27,-97],[18,-101]])bx(x,gy(x,z)+.55,z,1.5,1.1,1,wm,{s:1});
   const fy=gy(16,-114),sm=M(0x6f6c66,.95);for(let k=0;k<7;k++){const a=k/7*6.283,r=new T.Mesh(new T.DodecahedronGeometry(.16,0),sm);r.position.set(16+Math.cos(a)*.5,fy+.1,-114+Math.sin(a)*.5);scene.add(r)}
   const f=new T.Mesh(new T.ConeGeometry(.3,.75,6),new T.MeshBasicMaterial({color:0xff7a22}));f.position.set(16,fy+.4,-114);scene.add(f);S.fire=f}catch(e){log('props do acampamento: '+e.message,'e')}
+ try{const R2=rng(31),mw=M(0x7a5a38,.9),ms=M(0x8d8a82,.95),mc=M(0x3f5a8c,.7),mh=M(0xa8924a,.95);let n=0;
+  for(let t=0;t<2500&&n<44;t++){const x=lerp2(-60,125,R2()),z=lerp2(-322,-135,R2()),dp=dPath(x,z);
+   if(dp<4.5||dp>28)continue;if(Math.hypot(x-18,z+118)<42||Math.hypot(x+70,z+310)<26||Math.hypot(x-34,z+180)<10||Math.hypot(x+30,z-38)<16)continue;
+   if(x>-4&&x<44&&z>-266&&z<-234)continue;if([[15,-280],[30,-292],[44,-276],[26,-272],[38,-284],[12,-290],[34,-300],[50,-285],[-40,-298],[-62,-318],[20,-238],[48,-252],[6,-262],[58,-318],[26,-322],[-8,-290],[-30,-288],[-52,-296]].some(q=>Math.hypot(x-q[0],z-q[1])<8))continue;if(x>28&&x<64&&z>-328&&z<-294)continue;
+   const h=gy(x,z);if(h<3.2||slope(x,z)>.22)continue;const r=R2();
+   if(r<.3)bx(x,h+.6,z,3.4,1.2,.6,ms,{s:1});
+   else if(r<.5){const a=R2()<.5;bx(x,h+1.15,z,a?2.5:6,2.3,a?6:2.5,mc,{s:1})}
+   else if(r<.75){bx(x,h+.55,z,1.5,1.1,1.5,mw,{s:1});bx(x+.3,h+1.4,z,1.2,.6,1.2,mw,{s:1});bx(x+1.7,h+.55,z+.2,1.5,1.1,1.5,mw,{s:1})}
+   else if(r<.9)bx(x,h+1.1,z,3,2.2,1.1,ms,{s:1});
+   else bx(x,h+.7,z,2.2,1.4,1.6,mh,{s:1});
+   n++}
+  dbg('esconderijos no pasto: '+n)}catch(e){log('esconderijos do pasto: '+e.message,'e')}
+ try{const mc2=M(0x3f5a8c,.7),ms2=M(0x8d8a82,.95);bx(57,BY+1.2,-358,1.8,2.4,5.5,mc2,{s:1});bx(103,BY+1.2,-364,1.8,2.4,5.5,mc2,{s:1});bx(61,BY+1.2,-386,5.5,2.4,1.8,mc2,{s:1});bx(100,BY+.6,-384,3.4,1.2,.6,ms2,{s:1});bx(98,BY+.6,-340,3.4,1.2,.6,ms2,{s:1});bx(60,BY+.6,-344,3.4,1.2,.6,ms2,{s:1})}catch(e){log('esconderijos da base: '+e.message,'e')}
  try{const kx=-1.5,kz=-86,ky=gy(kx,kz),tc=new T.Mesh(new T.CylinderGeometry(.34,.42,.55,8),M(0x6b4a2a,.95));tc.position.set(kx,ky+.27,kz);tc.castShadow=true;scene.add(tc);S.kRock=[kx,ky+.55+.03,kz]}catch(e){log('toco da faca: '+e.message,'e')}
  buildUI();buildEvents();
 };
