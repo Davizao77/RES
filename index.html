@@ -5,8 +5,9 @@
     (ex.: este é res_v5.html -> a próxima atualização vira res_v6.html, depois res_v7.html...)
  2. Dentro do arquivo, atualize junto: este bloco (versão atual + histórico), o <title>, o <meta name="res-version"> e a constante RES_VERSION no JS.
  3. Entregue ao usuário apenas o arquivo novo, informando o nome dele.
- Versão atual: v118
+ Versão atual: v119
  Histórico:
+ v119 (index.html): LOJA DO CAPITULO 2 NUNCA ABRIA (CAUSA ACHADA). No modo historia o boot terminava antes de LOJA.build() (so o modo teste chamava), entao LOJA.built ficava falso e o tick, o FALAR e o abrir nao faziam nada. Agora lojaSetup() chama LOJA.build(). Alem disso a loja roda no INICIO do tickP3, em try proprio (antes vinha depois de introTick/ctrlP3). Mantidos os ajustes da v118 (alcance 14 m, A/X, painel na frente do rosto). NAO TESTADO em aparelho.
  v118 (index.html): LOJA DO CAPITULO 2 NO QUEST. (1) ALCANCE de 6 m para 14 m (medido ate o vendedor da loja, o comerciante de verdade, o balcao e a area de venda; a etiqueta FALAR cresce com a distancia); aviso do comerciante a 16 m. (2) BOTAO A/X nao depende mais de o controle estar registrado (antes, se o controle da mao nao estivesse na lista, o A era ignorado). (3) PAINEL agora fica no mundo, a 1,1 m na frente do rosto na hora de abrir (antes ficava preso a camera); com o menu aberto, A/X traz o painel de volta pra frente do rosto. (4) Se a loja der erro, aparece na legenda ('[loja] erro: ...'). NAO TESTADO em aparelho.
  v117 (index.html): CAPITULO 2 - O DAVI AGORA COMECA COM A FACA TATICA NA BAINHA (antes comecava so com a pistola, decisao D2). Salvamento com outra faca (facao/bowie) continua valendo. A faca tatica aparece como COMPRADA na loja. NAO TESTADO em aparelho.
  v116 (res_v116.html): CAPITULO 3 - SO PLANEJAMENTO, CONFERENCIA DAS REGRAS (nenhuma mudanca de jogo). O usuario mandou conferir se as regras ja estavam no arquivo: ja estavam o formato dos cap. 1 e 2, as 8 partes, vozes na Arena IA, drama liberado, historia, mapas, regras da Emmy (espera ser detectado), loja, animais, cativeiros e o confronto no escuro. FALTAVA escrever com todas as letras que ARMAS, MUNICAO e GRANA seguem com o jogador do cap. 2 para o cap. 3. Acrescentado: regra R7, ajuste na Parte 1(b), na Parte 3/4 (nada de reiniciar equipamento), campos armas/municao/dinheiro no save res_save_c3 e checagem na Parte 7. Title, meta res-version e RES_VERSION agora dizem v116.
@@ -563,9 +564,9 @@ c2_pen_006 | Pen | chiado | "Ceif... ch... vocês... ch... a mansão... ch... cu
  --- LISTA DE FALAS DO CAPÍTULO 3 (cada parte acrescenta aqui: id | personagem | tom | texto | gatilho; prefixo c3_) ---
  (vazia: nenhuma fala numerada ainda)
 -->
-<meta name="res-version" content="v118">
+<meta name="res-version" content="v119">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>RES v118</title>
+<title>RES v119</title>
 <style>
 :root{--bg:#0b0a0a;--fg:#e9e2dc;--red:#a3120f;box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,sans-serif;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
@@ -623,7 +624,7 @@ $('tb').onclick=()=>{term.style.display=term.style.display==='block'?'none':'blo
 addEventListener('keydown',e=>{if(e.key==='`')$('tb').click()});
 addEventListener('error',e=>log('ERRO: '+e.message+' ('+(e.filename||'').split('/').pop()+':'+e.lineno+')','e'));
 addEventListener('unhandledrejection',e=>log('PROMISE: '+(e.reason&&e.reason.message||e.reason),'e'));
-const RES_VERSION='v118';const STORY={on:false,cfg:{walk:1},gy:()=>0,respawn(){},tick(){},clamp(){},start(){}};let bootMode=null;const XR_FOVEATION=.5;log('RES '+RES_VERSION+' · Three.js r'+T.REVISION+' carregado');
+const RES_VERSION='v119';const STORY={on:false,cfg:{walk:1},gy:()=>0,respawn(){},tick(){},clamp(){},start(){}};let bootMode=null;const XR_FOVEATION=.5;log('RES '+RES_VERSION+' · Three.js r'+T.REVISION+' carregado');
 let A,world,TR,ptr={},bodies=[],ready=false,booting=null,HT,HQ,HV,HZ;
 /* ---------- carrega Ammo.js ---------- */
 function loadAmmo(){const u=['https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/ammo.wasm.js','https://cdn.jsdelivr.net/npm/ammo.js@0.0.10/ammo.js'];
@@ -4648,7 +4649,8 @@ S.animalKnife=(b0,b1,dv,sp,stab,live)=>{if(!(stab||live))return;
   a.kcd=stab?.5:.35;const dmg=(stab?30:14)*((typeof KD!=='undefined'&&KD[KTY])||1);_kd.copy(dv);_kd.y=0;if(_kd.lengthSq()<1e-4)_kd.set(fx,0,fz);
   S.an2hit(a,dmg,b1.clone(),_kd,stab?'stab':'cut');
   try{haptic((typeof kHd!=='undefined'&&kHd)?kHd:'right',.7,50)}catch(e){}try{bloodA=Math.min(.75,bloodA+.22)}catch(e){}}};
-function tickP3(dt,p){const hp=PL.hp;ctrlP3();introTick(dt);if(P3.carry)xrDrop();if(P3.btn)P3.btn.style.display=(P3.carry&&!isXR())?'block':'none';tickLoja(dt,p);
+function tickP3(dt,p){const hp=PL.hp;try{tickLoja(dt,p)}catch(e){if(!P3.le2){P3.le2=1;log('tickLoja: '+e.message,'e');try{S.say('sis','[loja] erro: '+e.message,{dur:6})}catch(e2){}}}
+ ctrlP3();introTick(dt);if(P3.carry)xrDrop();if(P3.btn)P3.btn.style.display=(P3.carry&&!isXR())?'block':'none';
  if(!P3.i1&&P2.t>(P3.w===9?1:12)){P3.i1=1;S.say('pen','Ceifador... ch... est\u00e1 me ouvindo? ...Ceifador?',{dur:3.2,voice:'c2_pen_001.mp3'});S.say('pen','...ch... sem sinal...',{dur:2.2,voice:'c2_pen_002.mp3'})}
  if(!P3.i2&&P2.t>16){P3.i2=1;S.say('sis','Ca\u00e7e animais com a pistola e leve a carca\u00e7a ao comerciante.',{dur:3.4})}
  /* carcaca */
@@ -4658,7 +4660,8 @@ function tickP3(dt,p){const hp=PL.hp;ctrlP3();introTick(dt);if(P3.carry)xrDrop()
   const sp=S.sellPt;if(sp&&Math.hypot(p.x-sp[0],p.z-sp[1])<3.2){S.money+=c.v;c.g.visible=false;c.sold=1;P3.carry=null;S.say('sis',c.kind==='onca'?'Comerciante: Uma on\u00e7a! Voc\u00ea \u00e9 louco ou s\u00f3 azarado? Pago bem, de qualquer jeito.':'Comerciante: Carne fresca. Gosto de quem n\u00e3o chega de m\u00e3os abanando.',{dur:3.4,voice:c.kind==='onca'?'c2_merc_003.mp3':'c2_merc_002.mp3'});S.say('sis','Carca\u00e7a vendida: +$'+c.v+'  total $'+S.money,{dur:2.2})}}
  else if(hp>0){for(const a of P2.an){if(!a.dead||a.sold)continue;if(a.nopick>0){a.nopick-=dt;continue}if(Math.hypot(p.x-a.g.position.x,p.z-a.g.position.z)<2.2){P3.carry=a;a.g.scale.setScalar(.75);S.say('sis','Carca\u00e7a nas costas ($'+a.v+'). Leve ao comerciante; n\u00e3o d\u00e1 pra correr.',{dur:2.6});break}}}}
 /* ===== PARTE 3 (v101): loja do comerciante (LOJA do modo teste movida para a cabana) ===== */
-function lojaSetup(){const grp=LOJA.group||scene.children.find(o=>o.isGroup&&Math.abs(o.position.x+25.9)<.02&&Math.abs(o.position.z-14)<.02);if(!grp){log('loja (cap. 2): grupo da loja nao encontrado','e');try{S.say('sis','[loja] grupo da loja nao encontrado',{dur:6})}catch(e2){}return}
+function lojaSetup(){try{LOJA.build()}catch(e){log('loja (build, cap. 2): '+e.message,'e');try{S.say('sis','[loja] erro ao montar: '+e.message,{dur:6})}catch(e2){}}
+ const grp=LOJA.group||scene.children.find(o=>o.isGroup&&Math.abs(o.position.x+25.9)<.02&&Math.abs(o.position.z-14)<.02);if(!grp){log('loja (cap. 2): grupo da loja nao encontrado','e');try{S.say('sis','[loja] grupo da loja nao encontrado',{dur:6})}catch(e2){}return}
  const[cx,cz]=PT.merc;grp.position.set(cx,gy(cx,cz),cz+2.2);grp.rotation.y=0;grp.updateMatrixWorld(true);
  /* v113: esconde TUDO do grupo antigo (placa LOJA e mascara do vendedor ficavam soltas no ar); so a etiqueta FALAR continua */
  grp.traverse(o=>{if(o.isMesh&&o!==LOJA.tag)o.visible=false});P3.lg=grp;
