@@ -5,8 +5,11 @@
     (ex.: este é res_v5.html -> a próxima atualização vira res_v6.html, depois res_v7.html...)
  2. Dentro do arquivo, atualize junto: este bloco (versão atual + histórico), o <title>, o <meta name="res-version"> e a constante RES_VERSION no JS.
  3. Entregue ao usuário apenas o arquivo novo, informando o nome dele.
- Versão atual: v129
+ Versão atual: v132
  Histórico:
+ v132 (res_v132.html): CAPITULO 3 - PARTES 7 E 8. PARTE 7 (CACA A BUGS, SEM NAVEGADOR AQUI): (a) lint estatico dos identificadores do modulo do cap. 3 (nenhum global faltando); (b) SIMULACAO em Node do modulo contra um jogo 'fingido': build3, start3, ticks, os 19 eventos, os 16 cativeiros (97 pessoas), os 7 misterios, fogo, saida da casa, morte do Major, noite, escolha de aliados (VR), descida e fim do capitulo, mais salvar e carregar o save: 0 erros. BUGS ACHADOS E CORRIGIDOS: (1) a Boca do Poco e a saida dos fundos eram salvas como 'feitas'; depois de carregar o save o fim do capitulo nunca disparava, e o Poco virava checkpoint antes da descida; agora os dois eventos nao entram em 'eventos' e o Poco nao e checkpoint; (2) os 17 guardas da casa nasciam todos no mesmo quadro (travada); agora nascem 2 por quadro. NAO TESTADO EM APARELHO (desempenho no Quest 2, hub com 48 figuras, ~28 mil plantas, 120 inimigos, colisao de escadas, Emmy atirando, volante, tudo depende de teste real). PARTE 8 (VOZES): 93 falas com voz em 16 personagens (Emmy 35, Pen 32, Zelador 5, Seu Deodato 4, Dona Neide 3, Major 2, Dra. Helena 2, Jana 2, Comerciante, Zequiel, Marreta, Tiao, Dona Chica, Miguelzinho, Dr. Tobias, Marcus); arquivos c3_<personagem>_<NNN>.mp3 na pasta vozes/; o modulo ja procura cada voz pelo texto da legenda (mapa VOICE); o AVISO DE VOZES do menu agora tambem conta o cap. 3 e nao da alerta vermelho enquanto o cap. 3 nao tiver nenhum mp3. Arquivo de prompt para a Arena IA: vozes_cap3_prompt.md. Troquei 'filho da puta' por 'canalha' (o filtro da Arena IA barrou isso no cap. 2). PENDENTE: gerar os mp3 na Arena IA.
+ v131 (res_v131.html): TRES BUGS DO CAP. 2 QUE VALEM PARA TODOS OS CAPITULOS (relato do usuario). (1) LOJA: o dinheiro mostrado era o do ARENA e os precos eram os base (muito baratos) porque vStory() testava 'typeof S' mas S nao e global (so existe dentro dos modulos da historia); vStory(), vCash() e vPay() agora usam STORY, entao a loja mostra e cobra o dinheiro da historia (S.money) com os precos x3,5 que o projeto definiu (vale tambem para colete e para os itens da Parte 6). A loja ficava escura porque o balcao nao tinha luz propria: na historia agora cada material do balcao ganha 20% de emissivo e uma luz quente pontual. (2) ANIMAIS: sangue 2x (60/48 particulas na estocada/tiro, mais 24 no corte), cada acerto deixa uma mancha no chao, o animal ferido sangra por 4,5 s pingando e manchando, e ao morrer deixa 3 manchas maiores; HP novo: javali 130, cervo 80, onca 200, onca-preta 260, capivara 70, queixada 100 (antes 60/40/90/120/35/50); tiro da pistola em animal 18 (antes 12). (3) VOLANTE DO CARRO DO CAP. 2 EM VR: agora da para SEGURAR o volante (grip com a mao perto do aro, uma ou duas maos; gira junto com o angulo da mao como no sistema de carros do arena) e o analogico esquerdo continua funcionando; ao sentar, as armas das maos vao para o coldre/bainha (antes ficavam na frente do volante) e a mao que segura qualquer coisa nao agarra o volante; o jogador agora e posicionado com a CABECA no ponto do motorista do carro (antes o corpo ficava num deslocamento fixo e a mao nao alcancava o volante). NAO TESTADO em aparelho (sem navegador aqui). Se o volante ainda nao alcancar, o proximo suspeito e S.zd/S.ey do carro 'civic' (posicao do motorista).
+ v130 (res_v130.html): CAPITULO 3 - PARTE 6 (ATO 4, PREPARACAO E DESCIDA, B12 e B13; primeira passada, NAO TESTADO em aparelho: so sintaxe). (1) B12 A NOITE ANTES: ao voltar ao hub depois da morte do Major comeca a noite fechada (preset 2): refeicao da Dona Neide (vida cheia), licao do Seu Deodato sobre o escuro, estoque novo na loja, cena da fogueira (Emmy 'nao vou agradecer...' e Pen 'e voltem, porra') e, depois de 40 s, a escolha de QUEM DESCE (ate 2 entre os libertos principais que o jogador soltou; so grava S.aliadosDescem para o capitulo 4; no VR escolhe sozinho). (2) LOJA FINAL: a loja ganhou duas linhas (ESCURO: lanterna, oculos noturnos, sinalizador; CURATIVOS: kit pequeno +40, kit grande vida cheia); com mais de 6 linhas o painel encolhe o espacamento; sinalizador e curativos podem ser comprados varias vezes. (3) SISTEMA DO ESCURO: lanterna (SpotLight na camera, tecla L / botao / aperto esquerdo no VR) que AUMENTA a deteccao dos inimigos em 1,8x; ESCUTA (Q / botao / aperto direito) mostra pontos vermelhos nos inimigos a ate 32 m por 2,6 s com recarga de 8 s; oculos noturnos (N / botao; no VR ligam sozinhos com a lanterna apagada); sinalizador (G) com luz vermelha por 40 s (maximo 2 ao mesmo tempo); curativo (H). Botoes na tela so fora do VR. (4) B13 A DESCIDA: apos a escolha, centenas de lampioes emissivos se acendem dos dois lados da trilha do hub ate o Poco; na Boca do Poco a Emmy diz 'eu vou do seu lado', aparece o cartao FIM DO CAPITULO 3 (mesmo estilo), a voz do Zelador no escuro, save final (concluido) e res_save_c3.json. Antes da descida a Pen manda voltar ao acampamento. (5) Hub: moradores visiveis ate 48 figuras (antes 40). (6) Save3 guarda noite, descida, consumiveis e alianca. NAO FEITO: aldeia de 90 figuras visiveis (limite por desempenho, decidir na Parte 7), cartao ou gatilho para o cap. 4, lampioes com luz real no chao, som, vozes (Parte 8). SUPOSICOES: precos base (lanterna 60, oculos 120, sinalizador 20, kits 30/70, x3,5 no modo historia), 1,8x de deteccao, 32 m de escuta.
  v129 (res_v129.html): CAPITULO 3 - PARTE 5 (ATO 3, MATA UMIDA II, B9 a B11; primeira passada, NAO TESTADO em aparelho: so sintaxe). (1) CLIMA: ao soltar o C3 (Vila) vem o ATO 3: dia nublado com CHUVA FRACA (420 riscos em volta do jogador, so no mapa da mata; S.rain3 liga/desliga) e, quando o Major morre, o dia vira ENTARDECER (preset 0). (2) B9 CLINICA: ao chegar fala da Pen e da Emmy; ao soltar o C4 a Dra. Helena examina a cabeca do Davi ('mexeram na sua cabeca e fizeram bem feito'), Pen e Emmy reagem e o Dr. Tobias oferece ajuda; a Enfermeira Vilma cai com fala. (3) B10 PEDREIRA: 4 franco-atiradores parados em pontos altos em volta (so atiram se virem o jogador); ao soltar o C5 Seu Deodato mostra a entrada de tras do Poco (pista entrada_fundos) e adianta 'quem acende a luz e o primeiro a morrer' (a licao completa e da Parte 6). (4) B11 RESERVADOS: fala de abertura sobre silencio; casaco e caderno do Caio (leitura por proximidade, 2,2 m, pistas salvas): 'levado ao Poco ontem' e a ultima pagina; ao soltar o C6 Jana, Marcus e a Pen falam pelo radio depois de dois anos. (5) MORTE DO MAJOR: ao cair, ultima fala, Emmy e Pen comentam, S.majorMorto=1 e o clima vira entardecer. (6) Save3 guarda os chefes mortos (nao reaparecem), clima e pistas. (7) Hub nivel 6 ja sobe com 81 salvos. NAO FEITO: stealth pesado alem do que o jogo ja tem (nao ha patrulhas novas nem cegueira), cachoeira, sons de chuva/sapo, ponte e barco, loja com estoque novo e licao do escuro (Parte 6), vozes (Parte 8). SUPOSICOES: textos, 4 atiradores, raio de 2,2 m, chuva so no ato 3.
  v128 (res_v128.html): CAPITULO 3 - PARTE 4 (ATO 2, MATA UMIDA I, B5 a B8; primeira passada, NAO TESTADO em aparelho: so sintaxe). (1) B5: a saida da casa agora leva a mata ao AMANHECER COM NEBLINA (novos climas: ato 3 = amanhecer, ato 4 = dia nublado; S.setAct3 aceita 0..4); na Porteira a Pen conta que mandou o Salles a merda e foi demitida pelo radio. (2) VIRADA DO COMERCIANTE no hub: fala de socio do Zelador, Emmy aponta a arma (ela vira e levanta o braco por 5,5 s), Pen segura 'e fonte'; fala muda se o livro-caixa (M2) ja foi lido. (3) B6: hub cresce com os salvos (aviso na legenda a cada nivel), Dona Neide fala se C1 foi libertado. (4) E3 DA EMMY: ela ignora animais, mas ataca o animal que esta atacando o jogador (agr), 65% de acerto, 35 de dano; carcaca e dinheiro continuam so do jogador (E4). (5) ANIMAIS NOVOS: onca-preta, capivara (foge) e queixada (em bando de 4, ataca) reaproveitando os modelos de onca e javali com outra cor; total ~54 animais. NAO FEITOS: anta, jacare, cobra (precisam de modelo proprio). (6) B7 SERRARIA: Feitor Zequiel fala ao chegar; ao soltar o C2 o Marreta se apresenta. (7) B8 VILA: o Major Rocha provoca pelo radio na primeira vez que o jogador chega; ao soltar o C3 Tiao, Dona Chica e Miguelzinho falam, o radio e consertado (pista sinal_pen, S.sinalPen salvo) e a Pen diz que o sinal ficou limpo. (8) CORRECAO: historico antigo agora mostra o nome certo de cada arquivo. NAO FEITO: cachoeira, sons de sapo/inseto, ponte e barco do pantano, chuva (Parte 5), loja com estoque novo (Parte 6), vozes (Parte 8). SUPOSICOES: textos das falas, hora do dia por ato, 4 queixadas por bando.
  v127 (res_v127.html): BUG GERAL DA FACA (todos os capitulos): 'em alguns pontos a faca nao conta dano'. CAUSA: o corte (live) e a estocada (kTry) de qualquer humano so testavam as esferas de acerto do corpo (4 no tronco/cabeca e 8 em cada braco/perna); se a lamina passava por um ponto entre as esferas (ombros, lados, virilha, pes, membro ja decepado, inimigo grande) o golpe atravessava sem nenhum dano, porque o codigo dava 'continue' sem tentar mais nada. CORRECAO: se nenhuma esfera pegar, a lamina agora e testada contra a capsula do corpo inteiro (raio 0,27 m x escala do inimigo; antes so objetos sem esqueleto usavam isso), e o golpe vira um acerto de tronco normal (cutHit/kEnter com zona nula; o assassinato silencioso continua exigindo cabeca e as costas). NAO TESTADO em aparelho. Se ainda houver pontos sem dano, o proximo suspeito e a velocidade minima da lamina (sp>2.2 no corte; sp>.45 e direcao no XR).
@@ -568,15 +571,15 @@ c2_pen_006 | Pen | chiado | "Ceif... ch... vocês... ch... a mansão... ch... cu
 
  --- STATUS DAS PARTES DO CAPÍTULO 3 (atualizar ao fim de cada conversa) ---
  Plano: REGISTRADO (res_v115.html) e CONFERIDO na v116 (res_v116.html, R7 acrescentada), só documentação.
- Parte 1: CONCLUIDA na estrutura (res_v127.html: entrada, herança R7, Mapa B, Mapa A, zonas); teste em aparelho fica para a Parte 7. Parte 2: PENDENTE. Parte 3: CONCLUIDA na primeira passada (res_v127.html: Ato 1 jogavel, a casa B1 a B4). Parte 4: CONCLUIDA na primeira passada (res_v128.html: mata umida I, B5 a B8). Parte 5: CONCLUIDA na primeira passada (res_v129.html: mata umida II, B9 a B11). Parte 6: PENDENTE. Parte 7: PENDENTE. Parte 8: PENDENTE.
+ Parte 1: CONCLUIDA na estrutura (res_v127.html: entrada, herança R7, Mapa B, Mapa A, zonas); teste em aparelho fica para a Parte 7. Parte 2: PENDENTE. Parte 3: CONCLUIDA na primeira passada (res_v127.html: Ato 1 jogavel, a casa B1 a B4). Parte 4: CONCLUIDA na primeira passada (res_v128.html: mata umida I, B5 a B8). Parte 5: CONCLUIDA na primeira passada (res_v129.html: mata umida II, B9 a B11). Parte 6: CONCLUIDA na primeira passada (res_v130.html: noite antes, escuro, loja final, descida e fim). Parte 7: CONCLUIDA no que da sem aparelho (lint + simulacao em Node, 0 erros; res_v132.html). Parte 8: CONCLUIDA no codigo e no prompt (res_v132.html); FALTA gerar os mp3 na Arena IA.
  Ao receber só "continuar" ou "parte N", o Claude lê este bloco, lembra as [VIRADA] da parte em uma linha e faz SÓ aquela parte, sem fazer perguntas.
 
  --- LISTA DE FALAS DO CAPÍTULO 3 (cada parte acrescenta aqui: id | personagem | tom | texto | gatilho; prefixo c3_) ---
  (vazia: nenhuma fala numerada ainda)
 -->
-<meta name="res-version" content="v129">
+<meta name="res-version" content="v132">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>RES v129</title>
+<title>RES v132</title>
 <style>
 :root{--bg:#0b0a0a;--fg:#e9e2dc;--red:#a3120f;box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,sans-serif;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
@@ -634,7 +637,7 @@ $('tb').onclick=()=>{term.style.display=term.style.display==='block'?'none':'blo
 addEventListener('keydown',e=>{if(e.key==='`')$('tb').click()});
 addEventListener('error',e=>log('ERRO: '+e.message+' ('+(e.filename||'').split('/').pop()+':'+e.lineno+')','e'));
 addEventListener('unhandledrejection',e=>log('PROMISE: '+(e.reason&&e.reason.message||e.reason),'e'));
-const RES_VERSION='v129';const STORY={on:false,cfg:{walk:1},gy:()=>0,respawn(){},tick(){},clamp(){},start(){}};let bootMode=null;const XR_FOVEATION=.5;log('RES '+RES_VERSION+' · Three.js r'+T.REVISION+' carregado');
+const RES_VERSION='v132';const STORY={on:false,cfg:{walk:1},gy:()=>0,respawn(){},tick(){},clamp(){},start(){}};let bootMode=null;const XR_FOVEATION=.5;log('RES '+RES_VERSION+' · Three.js r'+T.REVISION+' carregado');
 let A,world,TR,ptr={},bodies=[],ready=false,booting=null,HT,HQ,HV,HZ;
 /* ---------- carrega Ammo.js ---------- */
 function loadAmmo(){const u=['https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/ammo.wasm.js','https://cdn.jsdelivr.net/npm/ammo.js@0.0.10/ammo.js'];
@@ -2450,9 +2453,9 @@ try{['gun','ak','rf'].forEach(k=>{if(ATT.r[k])attR(k,1)})}catch(e){log('mira de 
 var VB=[0,25,50,100],VP=[300,800,2000],VN=['LEVE','MEDIO','PESADO'],VST={lv:0,cash:5000},VX=4.1,_vc=V(0,0,0);
 try{const _v=JSON.parse(localStorage.getItem('res_vest_v1')||'{}');VST.lv=Math.max(0,Math.min(3,_v.lv|0));if(_v.cash>=0)VST.cash=+_v.cash}catch(e){}
 function vSave(){if(stOn())return;try{localStorage.setItem('res_vest_v1',JSON.stringify({lv:VST.lv,cash:VST.cash}))}catch(e){}}
-function vStory(){return typeof STORY!=='undefined'&&STORY.on&&typeof S!=='undefined'}
-function vCash(){return vStory()?S.money:VST.cash}
-function vPay(n){if(vStory())S.money-=n;else VST.cash-=n}
+function vStory(){return typeof STORY!=='undefined'&&!!STORY.on}
+function vCash(){return vStory()?STORY.money:VST.cash}
+function vPay(n){if(vStory())STORY.money-=n;else VST.cash-=n}
 function vSet(lv){VST.lv=lv;PL.mx=100+VB[lv];PL.hp=PL.mx;vSave()}
 function vBuy(lv){const c=vStory()?Math.round(VP[lv-1]*3.5/10)*10:VP[lv-1];if(lv<=VST.lv||vCash()<c)return false;vPay(c);vSet(lv);return true}
 function mkVest(lv){const g=new T.Group(),m=M([0x4a5a3a,0x2b3038,0x15171a][lv-1],.85,.05),pl=M(0x3a3d42,.4,.8),bx=(w,h,d,mm,x,y,z)=>{const o=new T.Mesh(rbox(w,h,d,.004),mm);o.position.set(x,y,z);g.add(o)};
@@ -2610,8 +2613,8 @@ function draw(){rects=[];const gr=g.createLinearGradient(0,0,0,H);gr.addColorSto
  g.fillStyle='#e8c35a';g.font='bold 34px system-ui';g.textAlign='right';g.fillText('$ '+vCash(),1090,50);
  const cb={x:1120,y:14,w:140,h:72,id:'close'};rects.push(cb);const cg=g.createLinearGradient(0,cb.y,0,cb.y+cb.h);cg.addColorStop(0,hov==='close'?'#c4cacf':'#a9b0b6');cg.addColorStop(1,hov==='close'?'#8e969c':'#737a80');
  g.fillStyle=cg;rr(cb.x,cb.y,cb.w,cb.h,10);g.fill();g.strokeStyle='#4b5157';g.lineWidth=4;g.stroke();g.fillStyle='#1b1e21';g.font='bold 30px system-ui';g.textAlign='center';g.fillText('FECHAR',cb.x+cb.w/2,cb.y+cb.h/2+2);
- ITEMS.forEach((c,r)=>{const y=108+r*92;g.fillStyle='#d8d2c4';g.font='bold 30px system-ui';g.textAlign='left';g.fillText(c.k,36,y+38);
-  c.it.forEach((it,i)=>{const b={x:370+i*300,y:y,w:280,h:76,id:it.id};rects.push(b);const own=owned(it.id),h=hov===it.id;
+ const big=ITEMS.length>6;ITEMS.forEach((c,r)=>{const y=big?100+r*72:108+r*92;g.fillStyle='#d8d2c4';g.font='bold 30px system-ui';g.textAlign='left';g.fillText(c.k,36,y+38);
+  c.it.forEach((it,i)=>{const b={x:370+i*300,y:y,w:280,h:big?66:76,id:it.id};rects.push(b);const own=owned(it.id),h=hov===it.id;
    g.fillStyle=own?'#1f4d2a':h?'#5a2420':'#2a1816';rr(b.x,b.y,b.w,b.h,12);g.fill();g.strokeStyle=own?'#4fbf68':h?'#ff6a4a':'#6a2a22';g.lineWidth=h?5:3;g.stroke();
    g.textAlign='center';g.fillStyle='#fff';g.font='bold 27px system-ui';g.fillText(it.n,b.x+b.w/2,b.y+27);g.font='bold 25px system-ui';g.fillStyle=own?'#8fe3a0':'#e8c35a';g.fillText(own?'COMPRADO':'$ '+pz(it),b.x+b.w/2,b.y+54)})});
  g.textAlign='left';g.fillStyle='#bfb8a8';g.font='italic 28px system-ui';g.fillText('“'+msg+'”',36,692);
@@ -2667,7 +2670,7 @@ LOJA.clamp=()=>{if(!LOJA.built)return;const p=rig.position;if(LOJA.isOpen){p.x=l
  const r=.35;let x=p.x,z=p.z;if(x>CB.x0-r&&x<CB.x1+r&&z>CB.z0-r&&z<CB.z1+r){const a=x-(CB.x0-r),c=(CB.x1+r)-x,d=z-(CB.z0-r),e=(CB.z1+r)-z,m=Math.min(a,c,d,e);if(m===a)x=CB.x0-r;else if(m===c)x=CB.x1+r;else if(m===d)z=CB.z0-r;else z=CB.z1+r}
  p.x=x;p.z=z;lx=x;lz=z};
 LOJA.blk=()=>LOJA.isOpen||hold>0;
-LOJA.build=()=>{if(LOJA.built)return;realScene.add(scene);LOJA.built=true;const p=rig.position;lx=p.x;lz=p.z;draw()};
+LOJA.build=()=>{if(LOJA.built)return;realScene.add(scene);LOJA.built=true;if(vStory())try{scene.traverse(m=>{const mt=m.material;if(m.isMesh&&mt&&mt.emissive&&mt.color)mt.emissive.copy(mt.color).multiplyScalar(.2)});const pl=new T.PointLight(0xffd9a0,1.4,14,2);pl.position.set(0,3.2,0);scene.add(pl)}catch(e){}const p=rig.position;lx=p.x;lz=p.z;draw()};
 LOJA.group=scene;LOJA.tag=tag;LOJA.setMsg=s=>{msg=s};
 return LOJA})(scene);
 
@@ -3276,16 +3279,23 @@ function seatTick(G,id,on,st,v,dt){
  if(SEAT.err||!G)return;
  if(!SEAT.I||SEAT.G!==G){seatOff();const c=CARRO_ID[id]||CARROS[0],I=drvInBuild(c);
   if(I.mf)I.mf.material=SEAT.gm||(SEAT.gm=new THREE.MeshBasicMaterial({color:0x26303c}));   // retrovisor sem câmera traseira aqui: vidro escuro
-  G.add(I.G);drvExtHide(G,true);SEAT.G=G;SEAT.I=I;SEAT.c=c;SEAT.wa=0;SEAT.ck=0}
+  G.add(I.G);drvExtHide(G,true);SEAT.G=G;SEAT.I=I;SEAT.c=c;SEAT.wa=0;SEAT.ck=0;SEAT.hw=0;SEAT.hg=[0,0];SEAT.gn=0}
  const I=SEAT.I,c=SEAT.c;
- SEAT.wa+=(cl(st,-1,1)*1.7-SEAT.wa)*Math.min(1,dt*8);I.sp.rotation.z=SEAT.wa;               // volante gira com a direção
+ SEAT.wa+=(cl(st,-1,1)*1.7-SEAT.wa)*Math.min(1,dt*8);
+ {SEAT.hg=SEAT.hg||[0,0];SEAT.pa=SEAT.pa||[0,0];let n=0,sum=0;try{updHands()}catch(e){}if(VRON){I.wp.updateMatrixWorld(true);hands.forEach((h,i)=>{I.wp.worldToLocal(DV.copy(h.pos));const r=Math.hypot(DV.x,DV.y),a=Math.atan2(DV.y,DV.x),free=!HD[h.k].held;
+   if(free&&h.gr&&!SEAT.hg[i]&&Math.abs(r-.19)<.12&&Math.abs(DV.z)<.12){SEAT.hg[i]=1;SEAT.pa[i]=a;buzz(h,.4,30)}else if(!free||!h.gr||r>.38)SEAT.hg[i]=0;
+   if(SEAT.hg[i]){sum+=wrap(a-SEAT.pa[i]);SEAT.pa[i]=a;n++}});
+  if(n)SEAT.hw=cl((SEAT.hw||0)+sum/n,-3.3,3.3);else SEAT.hw=(SEAT.hw||0)*Math.max(0,1-dt*3);SEAT.gn=n;SEAT.gst=cl((SEAT.hw||0)/3.3,-1,1)}else SEAT.gn=0}
+ I.sp.rotation.z=(SEAT.gn||Math.abs(SEAT.hw||0)>.02)?SEAT.hw:SEAT.wa;               // volante gira com a direção
  SEAT.ck-=dt;if(SEAT.ck>0)return;SEAT.ck=.1;
  const sn=c.snd,vm=c.vmax/3.6,sv=Math.min(1.2,Math.abs(v)/vm),GB=[0,.2,.38,.55,.76,1.02];let g=1;for(let i=1;i<=5;i++)if(sv>=GB[i-1])g=i;
  const rp=sn.idle+(sn.red*.93-sn.idle)*(.28+.72*cl((sv-GB[g-1])/(GB[g]-GB[g-1]),0,1)),
   sv0={I:DRV.I,c:DRV.c,v:DRV.v,rpm:DRV.rpm,thr:DRV.thr,gear:DRV.gear,msg:DRV.msg};
  DRV.I=I;DRV.c=c;DRV.v=v;DRV.rpm=rp;DRV.thr=Math.abs(v)>.5?1:0;DRV.gear=g;DRV.msg='';
  try{drvDrawCk()}finally{DRV.I=sv0.I;DRV.c=sv0.c;DRV.v=sv0.v;DRV.rpm=sv0.rpm;DRV.thr=sv0.thr;DRV.gear=sv0.gear;DRV.msg=sv0.msg}}
+function seatRig(G,id,h){const c=CARRO_ID[id]||CARROS[0],S=drvSpec(c);G.updateMatrixWorld(true);G.localToWorld(DV.set(S.ex,S.ey,S.zd));rig.rotation.y=h-Math.PI/2;rig.updateMatrixWorld(true);DV2.copy(cam.position).applyAxisAngle(DVU,rig.rotation.y);rig.position.copy(DV).sub(DV2);rig.updateMatrixWorld(true);return true}
 const api={
+ rig:seatRig,gn(){return SEAT.gn|0},gst(){return SEAT.gst||0},
  get on(){return DRV.on},
  mk(id){return carroBuild(CARRO_ID[id]||CARROS[0],1)},
  seat(G,id,on,st,v,dt){if(OFF)return;try{seatTick(G,id,on,st,v,dt)}catch(e){SEAT.err=1;seatOff();dbg('interior do carro: '+e)}},
@@ -4397,7 +4407,7 @@ function spawnEn(g,e){const[px,pz]=ppl(g.x+e[0],g.z+e[1]),l=Object.assign({},LOO
  else{const r=g.pr;S.route(o,[[px+r,pz],[px,pz+r],[px-r,pz],[px,pz-r]],0,1.5,null)}
  if(g.dm)o.dm=g.dm;P2.en.push(o)}
 /* ---------- animais (v113: modelos novos em malha unica com cor por vertice; ataque, reacao a tiro/faca, colisao com o jogador) ---------- */
-const ANI={javali:{v:60,hp:60,sp:1.3},cervo:{v:80,hp:40,sp:2.0},onca:{v:220,hp:90,sp:2.4},onca_preta:{v:320,hp:120,sp:2.6},capivara:{v:70,hp:35,sp:1.6},queixada:{v:65,hp:50,sp:1.5}};
+const ANI={javali:{v:60,hp:130,sp:1.3},cervo:{v:80,hp:80,sp:2.0},onca:{v:220,hp:200,sp:2.4},onca_preta:{v:320,hp:260,sp:2.6},capivara:{v:70,hp:70,sp:1.6},queixada:{v:65,hp:100,sp:1.5}};
 const ANX={
  javali:{lg:.36,cy:.42,hl:.55,rr:.42,hy:.45,hp:[0,.14,.5],tp:[0,.14,-.55],hip:[[-.17,.3],[.17,.3],[-.17,-.26],[.17,-.26]],reach:1.9,dmg:10,cd:1.2,wnd:.4,str:.18,rec:.5,lunge:.8},
  cervo:{lg:.78,cy:.8,hl:.5,rr:.36,hy:.8,hp:[0,.2,.46],tp:[0,.16,-.5],hip:[[-.12,.36],[.12,.36],[-.12,-.34],[.12,-.34]],reach:0,dmg:0,cd:1,wnd:.4,str:.2,rec:.5,lunge:0},
@@ -4466,9 +4476,9 @@ function aSnd(k,t,d){try{if(!AC)return;const n=AC.currentTime,o=AC.createOscilla
 S.an2hit=(a,dm,pt,dir,kind)=>{if(!a||a.dead)return;
  a.hp-=dm;a.hr=.45;a.fl=1;a.hs=Math.random()<.5?-1:1;a.stun=Math.max(a.stun,kind==='bullet'?.2:.28);a.at=-1;a.cd=Math.max(a.cd,.35);
  const l=Math.hypot(dir.x,dir.z)||1;a.kx=dir.x/l;a.kz=dir.z/l;a.kv=kind==='bullet'?2.6:kind==='stab'?1.2:1.8;
- try{if(pt){_bn.set(-dir.x,.35,-dir.z).normalize();burst(pt,_bn,kind==='stab'?30:22,true);if(kind!=='bullet')burst(pt,_bn,12,true)}}catch(e){}
+ try{if(pt){_bn.set(-dir.x,.35,-dir.z).normalize();burst(pt,_bn,kind==='stab'?60:48,true);if(kind!=='bullet')burst(pt,_bn,24,true);a.bld=Math.max(a.bld||0,4.5);stain(pt,.55)}}catch(e){}
  const p=rig.position;aSnd(a.kind,a.hp<=0?'die':'hit',Math.hypot(p.x-a.g.position.x,p.z-a.g.position.z));
- if(a.hp<=0){a.dead=true;a.agr=0;a.dyT=0;a.nopick=.8;a.mv=false;try{stain(a.g.position,1.1)}catch(e){}}
+ if(a.hp<=0){a.dead=true;a.agr=0;a.dyT=0;a.nopick=.8;a.mv=false;try{const g=a.g.position;stain(g,2.4);stain({x:g.x+.5,z:g.z+.3},1.4);stain({x:g.x-.4,z:g.z-.5},1.2)}catch(e){}}
  else{if(a.kind!=='cervo')a.agr=1;else a.fz=6;a.mv=true}};
 S.an2dmg=(a,dm)=>S.an2hit(a,dm,null,{x:0,z:1},'bullet');
 function aTurn(a,ry,dt,k){const g=a.g;g.rotation.y+=(((ry-g.rotation.y+Math.PI*3)%(Math.PI*2))-Math.PI)*Math.min(1,dt*k);if(g.rotation.y>Math.PI)g.rotation.y-=Math.PI*2;else if(g.rotation.y<-Math.PI)g.rotation.y+=Math.PI*2}
@@ -4510,7 +4520,8 @@ function aPose(a,dt,spd,d){const R=ANX[a.kind],k=a.kind,L0=[0,0,0,0];a.bt+=dt;
  a.bd.position.set(0,by,bz);a.bd.rotation.set(bp,0,br);a.hd.position.set(R.hp[0],R.hp[1],R.hp[2]+hz);a.hd.rotation.set(hP,hy,0);
  if(a.jaw)a.jaw.rotation.x=jw;a.tail.rotation.set(tp,ty,0);for(let i=0;i<4;i++)a.lg4[i].rotation.x=L0[i];
  const f=a.fl;a.mat.emissive.setRGB(f*.7,f*.04,f*.04)}
-function animTick(dt,p){P2.at-=dt;const upd=P2.at<=0;if(upd)P2.at=.12;const alive=PL.hp>0&&S.dd<0;
+function animTick(dt,p){for(const a of P2.an){if(a.dead||!(a.bld>0))continue;a.bld-=dt;if((a.bt=(a.bt||0)-dt)<=0){a.bt=.2;const g=a.g.position;try{burst(new T.Vector3(g.x,g.y+.45,g.z),new T.Vector3(0,1,0),6,true);stain(g,.45)}catch(e){}}}
+P2.at-=dt;const upd=P2.at<=0;if(upd)P2.at=.12;const alive=PL.hp>0&&S.dd<0;
  for(const a of P2.an){const g=a.g,P=g.position,dx=p.x-P.x,dz=p.z-P.z,d=Math.hypot(dx,dz);
   if(upd)g.visible=d<150;if(!g.visible)continue;
   if(a.dead){if(a.dyT<1)aDie(a,dt);continue}
@@ -4672,7 +4683,7 @@ const P3={carry:null,i1:0,i2:0,ht:0},_ar=new T.Vector3();S.p3=P3;
 S.animalShot=(o,d,maxT)=>{let best=null,bt=maxT;
  for(const a of P2.an){if(a.dead||!a.g.visible)continue;const R=ANX[a.kind],g=a.g.position;if(Math.hypot(g.x-o.x,g.z-o.z)>maxT+3)continue;const ry=a.g.rotation.y,fx=Math.sin(ry),fz=Math.cos(ry);
   for(const s of[-.8,0,.8]){const cx=g.x+fx*R.hl*s,cy=g.y+R.hy,cz=g.z+fz*R.hl*s;_ar.set(cx-o.x,cy-o.y,cz-o.z);const t=_ar.dot(d),h2=_ar.lengthSq()-t*t,r2=R.rr*R.rr;if(t<0||h2>r2)continue;const th=Math.max(0,t-Math.sqrt(r2-h2));if(th<bt){bt=th;best=a}}}
- if(best){S.an2hit(best,12,new T.Vector3(o.x+d.x*bt,o.y+d.y*bt,o.z+d.z*bt),d,'bullet')}return !!best};
+ if(best){S.an2hit(best,18,new T.Vector3(o.x+d.x*bt,o.y+d.y*bt,o.z+d.z*bt),d,'bullet')}return !!best};
 /* faca: gancho chamado de knifeFrame (script principal) com a base e a ponta da lamina; corte 14, estocada 30, vezes o fator da faca (KD) */
 const _kp=new T.Vector3(),_kd=new T.Vector3();
 S.animalKnife=(b0,b1,dv,sp,stab,live)=>{if(!(stab||live))return;
@@ -4712,7 +4723,7 @@ function shopApply(id,quiet){const say=t=>{if(!quiet)try{S.say('sis',t,{dur:3.2}
   else if(/^m[123]$/.test(id)){attX('gun',+id[1],0);say('Pente alongado V'+id[1]+' na pistola.')}
   else if(id==='r_rf'){attR('rf',1);say('Mira de alcance guardada para a sniper.')}
   else if(id==='k_ta'||id==='k_fc'||id==='k_bw'){const t=id==='k_ta'?0:id==='k_fc'?1:2;kSetType(t);S.kn=1;knifeHome();say('Faca na bainha, no cinto (lado esquerdo). Quest: grip na bainha \u00b7 PC: F \u00b7 celular: bot\u00e3o FACA.')}
- }catch(e){log('compra (loja cap. 2): '+e.message,'e')}}
+ if(S.shop3)S.shop3(id,quiet)}catch(e){log('compra (loja cap. 2): '+e.message,'e')}}
 /* vitrine sobre o balcao da cabana (o balcao e o da cabana, em PT.merc z+3,7; tampo a y+1,21) */
 function shopStock(){const[cx,cz]=PT.merc,y=gy(cx,cz)+1.21,z=cz+3.7,O={s:0,ns:1},
  sm=(c,r,m)=>new T.MeshStandardMaterial({color:c,roughness:r,metalness:m||0}),mt=sm(0x1b1d21,.45,.7),st=sm(0x8a9096,.3,.9),wd=sm(0x6a4326,.8),ol=sm(0x4a5a3a,.8),bn=sm(0xd8d2c0,.7),br=sm(0xc8a24a,.5,.6);
@@ -4872,7 +4883,7 @@ function p5emmy(dt){const o=P4.em;if(!o)return;P5.ec-=dt;let t=null,td=48;for(co
  else{P5.ea=undefined;o.aimTo=.3}}
 function p5eng(sp,off){try{if(!AC||AC.state==='closed')return;if(!P5.eo){const o=AC.createOscillator(),f=AC.createBiquadFilter(),g=AC.createGain();o.type='sawtooth';f.type='lowpass';f.frequency.value=420;g.gain.value=0;o.connect(f);f.connect(g);g.connect(AC.destination);o.start();P5.eo=o;P5.eg=g}
  P5.eo.frequency.setTargetAtTime(48+sp*5.5,AC.currentTime,.1);P5.eg.gain.setTargetAtTime(off?0:.05+Math.min(.07,sp*.004),AC.currentTime,.1)}catch(e){}}
-function p5start(){P5.on=1;try{ropeHang=true}catch(e){}if(S.gbM){S.gbM.visible=false;const i=solids.indexOf(S.gbS);if(i>=0)solids.splice(i,1)}
+function p5start(){P5.on=1;try{ropeHang=true}catch(e){}try{if(isXR()){for(const k of['left','right']){const hd=HD[k].held;if(!hd)continue;if(hd.type==='gun'){HD[k].held=null;gunHolster()}else if(hd.type==='knife'){HD[k].held=null;knifeHome()}else release(k)}S.say('sis','Segure o volante: aperte o grip com a mao perto dele. O analogico esquerdo tambem vira.',{dur:4.5})}}catch(e){log('maos livres (carro): '+e.message,'e')}if(S.gbM){S.gbM.visible=false;const i=solids.indexOf(S.gbS);if(i>=0)solids.splice(i,1)}
  S.say('sis',isXR()?'Anal\u00f3gico esquerdo dirige \u00b7 gatilho direito acelera \u00b7 A freia':'W A S D dirige \u00b7 no celular: joystick (cima acelera, baixo freia/r\u00e9)',{dur:4.5});
  if(!P5.s1){P5.s1=1;p5say('Dirige, porra! Eles tão vindo!','c2_emmy_017',1)}}
 function p5reset(){if(!P5.G)return;try{RESCAR.seat(P5.G,'civic',false,0,0,0)}catch(e){}for(const c of P5.ch)scene.remove(c.g);P5.ch=[];P5.on=0;P5.v=0;P5.dead=0;P5.fin=0;P5.ft=0;P5.ent=0;P5.hp=P5.mh;P5.kills=0;P5.ea=undefined;
@@ -4895,6 +4906,7 @@ function tickP5(dt,p){p5init();if(!P5.G)return;
  try{ropeHang=true}catch(e){}const xr=isXR(),k=P5.k;let st=((k.KeyA||k.ArrowLeft)?1:0)-((k.KeyD||k.ArrowRight)?1:0),th=((k.KeyW||k.ArrowUp)?1:0)-((k.KeyS||k.ArrowDown)?1:0);
  if(!xr){if(Math.abs(joy.x)>.12)st=-joy.x;if(Math.abs(joy.y)>.15)th=-joy.y}
  else try{const ss=renderer.xr.getSession();if(ss)for(const s of ss.inputSources){const gp=s.gamepad;if(!gp)continue;if(LHd(s.handedness)==='left'){if(Math.abs(gp.axes[2]||0)>.15)st=-gp.axes[2];if(Math.abs(gp.axes[3]||0)>.15)th=-gp.axes[3]}else{if(gp.buttons[0]&&gp.buttons[0].pressed)th=1;if(gp.buttons[4]&&gp.buttons[4].pressed)th=-1}}}catch(e){}
+ if(xr){try{const g=RESCAR.gst();if(RESCAR.gn()||Math.abs(g)>.02)st=g}catch(e){}}
  if(P5.fin||P5.dead){st=0;th=0}
  const vm=P5.hp<P5.mh*.33?15.5:18;let v=P5.v;
  if(th>0)v+=(v<0?14:8.5)*th*(1-Math.max(0,v)/vm)*dt;else if(th<0)v-=(v>.4?14:5)*(-th)*dt;
@@ -4908,7 +4920,7 @@ function tickP5(dt,p){p5init();if(!P5.G)return;
  P5.x=nx;P5.z=nz;P5.v=v;if(v>0)P5.D+=v*dt;p5place();p5eng(Math.abs(v),P5.dead);
  /* camera: celular/PC em terceira pessoa, VR no banco do motorista */
  const cy=gy(nx,nz);if(!xr){rig.position.set(nx-fx*7.5,cy+.2,nz-fz*7.5);yaw+=wA((P5.h-Math.PI/2)-yaw)*Math.min(1,dt*3);pitch=-.12}
- else{const rx=Math.sin(P5.h),rz=Math.cos(P5.h);rig.rotation.y=P5.h-Math.PI/2;rig.position.set(nx-rx*.4+fx*.2,cy-.3,nz-rz*.4+fz*.2)}
+ else{let ok=0;try{ok=RESCAR.rig(P5.G,'civic',P5.h)}catch(e){}if(!ok){const rx=Math.sin(P5.h),rz=Math.cos(P5.h);rig.rotation.y=P5.h-Math.PI/2;rig.position.set(nx-rx*.4+fx*.2,cy-.3,nz-rz*.4+fz*.2)}}
  try{RESCAR.seat(P5.G,'civic',!!xr&&!!P5.on,st,v,dt)}catch(e){}   // v120: interior do carro (painel, bancos, volante) quando você está sentado em VR
  S.lx=rig.position.x;S.lz=rig.position.z;
  /* perseguidores */
@@ -5162,7 +5174,7 @@ function envA(){C.fog=.007;scene.fog.density=.007;scene.fog.color.set(0x17120f);
 function card(t1,t2){try{let d=document.getElementById('c3card');if(!d){d=document.createElement('div');d.id='c3card';d.style.cssText='position:fixed;left:0;right:0;top:38%;z-index:30;text-align:center;color:#e8dcc8;font:italic 700 34px Georgia,serif;letter-spacing:.12em;text-shadow:0 2px 10px #000;pointer-events:none;opacity:0;transition:opacity 1.2s';document.body.appendChild(d)}
  d.innerHTML=t1+'<div style="font:500 16px system-ui;letter-spacing:.2em;margin-top:8px;opacity:.8">'+t2+'</div>';d.style.opacity=1;clearTimeout(card.t);card.t=setTimeout(()=>d.style.opacity=0,3800);S.say('sis',t1+' · '+t2,{dur:3.5})}catch(e){}}
 function setMap(m){const first=S.map==null;S.map=m;const a=m==='A';A3.g.forEach(g=>g.visible=a);A3.ra.visible=a;if(A3.lamp)A3.lamp.visible=a;
- camera.far=C.far=a?140:330;camera.updateProjectionMatrix();if(a)envA();else S.setAct3(S.act3|0);if(!first&&S.on)card(a?'A CASA':'A MATA ÚMIDA',a?'noite chegando':'entardecer')}
+ camera.far=C.far=a?140:330;camera.updateProjectionMatrix();if(a)envA();else S.setAct3(S.act3|0);if(!first&&S.on)card(a?'A CASA':'A MATA ÚMIDA',a?'noite chegando':'entardecer');try{uiTools()}catch(e){}}
 S.toMap=(m,c)=>tp3(c,1);
 /* ===== PARTE 2 (v123): criação e localização de tudo (cap. 3). Reaproveita o kit exportado do cap. 2 (S.k2): inimigos por distância, animais, caça/venda/loja, caixas e grana. ===== */
 const K=()=>S.k2,C3={cg:[],hr:[],hg:[[],[],[],[],[],[],[]],lv:0,t:0,run:[],px:0,pz:0,bs:[],fire:[]};S.c3=C3;
@@ -5213,7 +5225,7 @@ function buildHub(){const[cx,cz]=PT.hub,H=C3.hg,cl=[0x56633f,0x6a5a3a,0x4a5360,0
  for(let i=0;i<8;i++)tn(5,i*.8+.2,27,i+2);add(5,bx(cx-4,cz-14,9,.9,1.6,wd,{s:false}));
  for(let i=0;i<10;i++){const a=i*.63;lamp(6,cx+Math.cos(a)*32,cz+Math.sin(a)*32)}for(const sx of[-1,1]){add(6,bx(cx+sx*20,cz+30,.25,6,.25,wd,{s:false}));add(6,bx(cx+sx*20+sx*1,cz+30,1.8,1.2,.05,0x7a2a22,{y:gy(cx,cz+30)+4,s:false}))}}
 function tickHub(dt,p){if((C3.ht=(C3.ht||0)+dt)<1)return;C3.ht=0;const n=S.salvos|0,lv=TH.filter(t=>t<=n).length;if(lv!==C3.lv){if(lv>C3.lv&&C3.lvOk)sy('sis','O acampamento cresceu. Salvos: '+n+'.',3);C3.lvOk=1;C3.lv=lv;C3.hg.forEach((a,k)=>a.forEach(m=>m.visible=k<=lv))}
- const d=Math.hypot(p.x-PT.hub[0],p.z-PT.hub[1]),want=Math.min(40,Math.max(0,n-C3.run.length));if(d<130&&C3.hr.length<want){for(let i=C3.hr.length;i<want&&i<C3.hr.length+6;i++){const a=i*2.4,r=5+i*.55,q=people('h',1)[0],f=K().fig(q.lk),x=PT.hub[0]+Math.cos(a)*r,z=PT.hub[1]+Math.sin(a)*r;f.position.set(x,gy(x,z),z);f.rotation.y=a+3.1;scene.add(f);C3.hr.push(f)}}
+ const d=Math.hypot(p.x-PT.hub[0],p.z-PT.hub[1]),want=Math.min(48,Math.max(0,n-C3.run.length));if(d<130&&C3.hr.length<want){for(let i=C3.hr.length;i<want&&i<C3.hr.length+6;i++){const a=i*2.4,r=5+i*.55,q=people('h',1)[0],f=K().fig(q.lk),x=PT.hub[0]+Math.cos(a)*r,z=PT.hub[1]+Math.sin(a)*r;f.position.set(x,gy(x,z),z);f.rotation.y=a+3.1;scene.add(f);C3.hr.push(f)}}
  for(const f of C3.hr)f.visible=d<130}
 /* ---------- animais (30+), inimigos por distância (~120 + 3 mini-chefes), loot ---------- */
 function defAnimals3(){const R=rng(555),ks=['javali','cervo','onca'],mix=[0,0,1,1,2,0,1,0,1,2];let n=0;const put=(c,r,m)=>{for(let i=0;i<m;i++){const a=R()*6.28,d=R()*r,x=c[0]+Math.cos(a)*d,z=c[1]+Math.sin(a)*d;if(gy(x,z)<2.2)continue;K().animal(ks[mix[(n++)%mix.length]],x,z)}};
@@ -5264,12 +5276,14 @@ function buildP2c(){
  try{setupA3()}catch(e){log('casa (Parte 3): '+e.message,'e')}
  try{setupB4()}catch(e){log('mata I (Parte 4): '+e.message,'e')}
  try{setupB5()}catch(e){log('mata II (Parte 5): '+e.message,'e')}
+ try{setupB6()}catch(e){log('noite e descida (Parte 6): '+e.message,'e')}
  S.pessoas3=C3.cg.map(c=>({cativeiro:c.id,pessoas:c.pp.map(q=>q.nome||q.id)}));S.bosses3=BOSS.concat([{id:'cecilia',nome:'Cecília Prado (Governanta)',map:'A'}]);
  log('Parte 2 (cap. 3): '+C3.cg.length+' cativeiros, '+C3.cg.reduce((a,c)=>a+c.pp.length,0)+' pessoas, '+K().P2.an.length+' animais')}
 function tickP2c(dt,p){C3.t+=dt;try{tickCages(dt,p)}catch(e){if(!C3.e1){C3.e1=1;log('cativeiros (tick): '+e.message,'e')}}
- if(S.map!=='A'){try{tickHub(dt,p);tickBoss(p);tickB5(dt,p)}catch(e){if(!C3.e2){C3.e2=1;log('hub/chefes (tick): '+e.message,'e')}}}}
+ if(S.map!=='A'){try{tickHub(dt,p);tickBoss(p);tickB5(dt,p);tickB6(dt,p)}catch(e){if(!C3.e2){C3.e2=1;log('hub/chefes (tick): '+e.message,'e')}}}}
 /* ===== PARTE 3 (v124): ATO 1 JOGÁVEL, A CASA (B1 a B4). Emmy (IA do cap. 2: só atira quando o jogador é detectado), guardas por andar, Governanta, C1 Criados + chave, mistérios M1..M7 em cena, incêndio e fuga. ===== */
-const READ=new Set(),sy=(w,t,d)=>{try{S.say(w,t,d?{dur:d}:undefined)}catch(e){}};S.lidos3=READ;
+const VOICE={"ZELADOR (rádio): Fim da exposição. Queimem a casa.": "c3_zelador_001", "Ele vai queimar tudo! Pega o que der e sai, agora!": "c3_emmy_001", "Os fundos! Corredor, cozinha, terraço! Eu fico na linha!": "c3_pen_001", "DONA NEIDE: Leve. É a chave da biblioteca. A casa só abre uma vez por ano, para quem o Seu Teodoro quer impressionar.": "c3_neide_001", "Impressionar. Esse canalha.": "c3_emmy_002", "Portão aberto, luzes acesas, e ninguém na porta. Isso é armadilha.": "c3_emmy_003", "Ceifador, Emmy... estou num canal privado, não é o da Agência. Se descobrirem, eu perco tudo. Entrem. Eu fico na escuta.": "c3_pen_002", "Entra. Eu cubro. E só atiro se eles te virem.": "c3_emmy_004", "ZELADOR (gravação): Boa noite, meus convidados. Eu deixei a casa aberta. Vocês vão querer entender antes de me conhecer.": "c3_zelador_002", "ZELADOR (gravação): Fiquem à vontade, mas não demorem.": "c3_zelador_003", "Mesa posta para dois. Ele sabia que a gente vinha.": "c3_emmy_005", "Tem gente presa ali atrás da grade. Limpa a área e abre.": "c3_emmy_006", "Ainda não. Eu quero entender esta casa até o fim.": "c3_emmy_007", "A Governanta ainda está atrás de vocês! Resolve isso antes de sair!": "c3_pen_003", "Trancada. Quem sabe da chave são os criados lá no porão.": "c3_emmy_008", "Ceifador, Emmy... eu mandei o Salles à merda. Me demitiram pelo rádio. A partir de agora é por minha conta.": "c3_pen_004", "Então você virou só uma voz. Serve.": "c3_emmy_009", "O Comerciante armou banca no acampamento dos libertos. Ele diz que a mata também é a praça dele.": "c3_pen_005", "COMERCIANTE: Fui sócio dele. Vendi os primeiros barcos. Hehe. Agora vendo bala pra quem vai matar o meu sócio. Sou consistente: eu sempre vendo.": "c3_comerciante_001", "Baixa a arma, Emmy. Ele é fonte. Sem ele a gente não sabe o que o Zelador movimenta.": "c3_pen_006", "Um passo em falso e eu esqueço que ele é fonte.": "c3_emmy_010", "DONA NEIDE: Servi aquele homem onze anos e nunca vi o rosto dele de frente. Isso diz tudo.": "c3_neide_002", "O acampamento cresce a cada pessoa que vocês tirarem de lá. Caçar, vender, equipar, resgatar.": "c3_pen_007", "ZEQUIEL (Feitor): Olha só, mais braço pro meu galpão. Quem manda aqui sou eu e a corrente!": "c3_zequiel_001", "Ele fala demais. Quando ele parar de falar, é porque eu atirei.": "c3_emmy_011", "MAJOR ROCHA (rádio): Aqui é o Major Rocha. Vocês entraram na minha vila. Eu tenho trinta homens e o povo da vila no meio. Pensem bem.": "c3_major_001", "Escudo humano. Todo militar de merda faz isso.": "c3_emmy_012", "Ele quer que vocês recuem. Não recuem. Mas cuidado com quem está no meio.": "c3_pen_008", "MARRETA: Mário, mas ninguém me chama de Mário. Trabalhei onze meses de graça achando que era emprego. Se tem briga, eu vou na frente!": "c3_marreta_001", "Fica atrás. Quando precisar de músculo, eu aviso.": "c3_emmy_013", "TIÃO: Rio eu conheço de olho fechado. Se precisar de barco, é comigo.": "c3_tiao_001", "DONA CHICA: Tem gente ferida na vila. Deixa que eu cuido.": "c3_chica_001", "MIGUEL: Eu conserto o rádio de vocês! O sinal da moça melhora já já.": "c3_miguel_001", "Ceifador... o sinal ficou limpo. Obrigada, garoto.": "c3_pen_009", "Calou a boca. Finalmente.": "c3_emmy_014", "A enfermeira caiu. A clínica é de vocês.": "c3_pen_010", "MAJOR ROCHA (último fôlego): Ele vai descer atrás de vocês. Vocês não têm luz.": "c3_major_002", "Acabou o discurso.": "c3_emmy_015", "O exército da facção ficou sem cabeça. O dia está virando. O Poço é o próximo.": "c3_pen_011", "Isso era um posto de saúde. Agora tem grade nas janelas.": "c3_pen_012", "Enfermeira armada. Que acolhimento.": "c3_emmy_016", "Tem gente no alto das pedras. São os franco-atiradores do Major. Não fiquem parados à vista.": "c3_pen_013", "Eu vejo. Eu cubro o lado esquerdo.": "c3_emmy_017", "Campo dos Reservados. Os que o patrono escolheu. Aqui é silêncio: eles não perdoam barulho.": "c3_pen_014", "Faca ou nada. E eu fico quietinha.": "c3_emmy_018", "O céu fechou. Vem chuva. Escorrega mais, enxerga menos. Vale para os dois lados.": "c3_pen_015", "DRA. HELENA: Deixa eu ver essa cabeça, meu filho.": "c3_helena_001", "DRA. HELENA: Isso não é cicatriz de bala nem de faca. Alguém mexeu na sua cabeça e fez bem feito.": "c3_helena_002", "A Agência.": "c3_pen_016", "Então foi isso que apagaram.": "c3_emmy_019", "DR. TOBIAS: Eu posso ajudar... se alguém me prometer que ninguém vai gritar.": "c3_tobias_001", "SEU DEODATO: Tem uma entrada de trás pro Poço. Passa por baixo da pedreira.": "c3_deodato_001", "SEU DEODATO: Lá dentro, quem acende a luz é o primeiro a morrer. Aprende a ouvir.": "c3_deodato_002", "JANA: Eu escrevi tudo. Cada nome, cada barco. E o Caio me pediu pra guardar o caderno dele.": "c3_jana_001", "MARCUS: ...Pen? Eu ouvi a sua voz no rádio do Major. Dois anos, Pen.": "c3_marcus_001", "Marcus. Eu tô aqui. Eu tô aqui, mano.": "c3_pen_017", "Cinco minutos. Eu fico de vigia.": "c3_emmy_020", "Noite fechada. A última antes do Poço. O povo se juntou todo no acampamento.": "c3_pen_018", "DONA NEIDE: Come. Ninguém desce de barriga vazia.": "c3_neide_003", "SEU DEODATO: Lá embaixo é escuro de verdade. No escuro, quem acende a luz é o primeiro a morrer. Aprende a ouvir.": "c3_deodato_003", "SEU DEODATO: Prende a respiração e escuta. (Tecla Q, botão ESCUTAR ou apertar o lado direito no VR.)": "c3_deodato_004", "O Comerciante abriu estoque novo: lanterna, óculos noturnos, sinalizadores e curativos.": "c3_pen_019", "Não vou agradecer. Mas se eu cair lá embaixo, você não volta sem ele. Não é pedido.": "c3_emmy_021", "Eu fico na linha até o último chiado. Vão. E voltem, porra.": "c3_pen_020", "Os libertos estão acendendo lampiões dos dois lados da trilha. É o único trecho claro da ilha.": "c3_pen_021", "Eu vou do seu lado.": "c3_emmy_022", "ZELADOR (do escuro): Bem-vindos à minha casa de verdade.": "c3_zelador_004", "Ainda não. Voltem ao acampamento. Vocês precisam estar prontos.": "c3_pen_022", "Teodoro Lins. \"O Zelador\". Está em todo quadro desta casa, em todo ano.": "c3_emmy_023", "É ele. Cara de professor. Ninguém desconfiaria.": "c3_pen_023", "Lotes numerados. Nomes, valores, datas. São as famílias que a Agência escondeu. Ele sabia onde cada uma estava.": "c3_pen_024", "Estoque. Ele chama gente de estoque, porra. Cada lote é um cativeiro.": "c3_emmy_024", "Esse número... é de dentro da Agência. É a linha do Diretor Salles.": "c3_pen_025", "Então foi o seu chefe que vendeu a gente.": "c3_emmy_025", "...Eu vou resolver isso. Depois.": "c3_pen_026", "Caio. A ficha dele está aqui. \"Retido. Levado ao Poço.\"": "c3_emmy_026", "Pen. Você sabia do Caio? Fala. Você SABIA?": "c3_emmy_027", "Não. Se eu soubesse, você ouviria de mim primeiro.": "c3_pen_027", "O símbolo do mural. É a marca do patrono, quem compra os lotes especiais.": "c3_pen_028", "Isso não é só dinheiro, Emmy. É fé.": "c3_pen_029", "Fé. Gente vendida numa capela no porão.": "c3_emmy_028", "ZELADOR (gravação): Ceifador. Você já jantou nesta mesa. Você só não lembra, e a culpa não é minha.": "c3_zelador_005", "Ele está falando com você, Ceifador?": "c3_emmy_029", "A Agência apagou o Davi, a pedido do Salles. Ele viu o rosto do patrono. Eu... não sabia que era isso.": "c3_pen_030", "O Poço. Minas de sal debaixo da ilha, com túnel para o mar. Os barcos entram na maré cheia do amanhecer.": "c3_emmy_030", "Mantido no escuro de propósito. Nenhum rosto na troca. O Caio vai estar lá.": "c3_pen_031", "Esse casaco é dele. Ainda tem cheiro de sal.": "c3_emmy_031", "JANA: Levaram o Caio ao Poço ontem, na maré cheia. Eu vi o barco sair.": "c3_jana_002", "O último caderno do Caio. Tem letra dele em todas as páginas.": "c3_emmy_032", "Última página: \"Se o Davi ler isto, a lembrança dele foi tirada, não perdida.\"": "c3_emmy_033", "Então o Caio sabia. Ele sabia o tempo todo.": "c3_pen_032", "Seu nome está no livro-caixa. Dá um motivo pra eu não estourar a sua cabeça.": "c3_emmy_034", "Esse cara de novo. Eu não vou com a cara dele.": "c3_emmy_035"};
+const READ=new Set(),sy=(w,t,d)=>{try{const o={};if(d)o.dur=d;if(VOICE[t])o.voice=VOICE[t]+'.mp3';S.say(w,t,o)}catch(e){}};S.lidos3=READ;
 const CLUE={
  M1:[['emmy','Teodoro Lins. "O Zelador". Está em todo quadro desta casa, em todo ano.'],['pen','É ele. Cara de professor. Ninguém desconfiaria.']],
  M2:[['pen','Lotes numerados. Nomes, valores, datas. São as famílias que a Agência escondeu. Ele sabia onde cada uma estava.'],['emmy','Estoque. Ele chama gente de estoque, porra. Cada lote é um cativeiro.']],
@@ -5294,15 +5308,15 @@ function startFire(){if(C3.fireOn)return;C3.fireOn=1;C3.ft=0;S.fire3(true);C.fog
 let LOCK=null;
 function lockBib(){const m=new T.Mesh(new T.BoxGeometry(4,3,.25),M(0x2a1a10));m.position.set(AX+28,FY[2]+1.5,AZ+20);A3.g[2].add(m);const s={x0:AX+26,x1:AX+30,z0:AZ+19.7,z1:AZ+20.3};A3.so[2].push(s);LOCK={m,s}}
 function unlockBib(){if(!LOCK)return;LOCK.m.visible=false;const i=A3.so[2].indexOf(LOCK.s);if(i>=0)A3.so[2].splice(i,1);LOCK=null;S.pistas=S.pistas||[];if(!S.pistas.includes('chave_biblioteca'))S.pistas.push('chave_biblioteca')}
-S.c1hook=silent=>{unlockBib();if(silent)return;sy('sis','Dona Neide: Leve. É a chave da biblioteca. A casa só abre uma vez por ano, para quem o Seu Teodoro quer impressionar.',4.4);sy('emmy','Impressionar. Esse filho da puta.',2.2)};
+S.c1hook=silent=>{unlockBib();if(silent)return;sy('sis','DONA NEIDE: Leve. É a chave da biblioteca. A casa só abre uma vez por ano, para quem o Seu Teodoro quer impressionar.',4.4);sy('emmy','Impressionar. Esse canalha.',2.2)};
 /* ---------- guardas por andar (A) e Governanta ---------- */
 const AEN=[[1,30,12,'atirador',0,[[30,12],[30,24]]],[1,9,10,'bruto',2,[[9,10]]],[1,51,10,'atirador',1,[[51,10],[48,14]]],[1,10,30,'atirador',4,[[10,30],[14,26]]],[1,50,30,'bruto',3,[[50,30]]],[1,20,-12,'atirador',5,[[20,-12],[40,-12]]],[1,46,-8,'atirador',2,[[46,-8]]],
  [2,15,8,'atirador',0,[[15,8],[20,12]]],[2,44,10,'bruto',3,[[44,10]]],[2,10,32,'atirador',1,[[10,32],[14,28]]],[2,50,32,'bruto',2,[[50,32]]],[2,34,30,'atirador',4,[[34,24],[34,38]]],
  [0,10,16,'atirador',5,[[10,16],[20,16]]],[0,20,12,'bruto',0,[[20,12]]],[0,50,20,'atirador',1,[[50,16],[50,30]]],[0,37,15,'atirador',3,[[37,15],[37,24]]]];
 function spawnA(f,x,z,role,li,rt,boss){x+=AX;z+=AZ;const l=Object.assign({},LOOKS[li%LOOKS.length],{x,z},boss?{s:boss.s}:{}),o=makeEnemy(x,z,l);roleSet(o,role,l);o.sty=1;if(boss){o.big=1}o.p.y=FY[f]+.9*(o.ck||1)+.05;reset(o);
  S.route(o,rt.map(q=>[AX+q[0],AZ+q[1]]),0,boss?3:2.5,null);if(boss){o.hp=boss.hp;o.boss=boss.nome}K().P2.en.push(o);return o}
-function spawnAllA(){if(C3.aSp)return;C3.aSp=1;try{for(const e of AEN)spawnA(e[0],e[1],e[2],e[3],e[4],e[5]);
-  C3.gov=spawnA(1,30,12,'bruto',1,[[30,12],[38,8],[50,8],[38,8],[30,12],[20,8],[8,8],[20,8],[30,12],[30,26],[30,12]],{s:1.08,hp:260,nome:'Cecília Prado (Governanta)'})}catch(e){log('guardas da casa: '+e.message,'e')}}
+function spawnAllA(){if(!C3.aq){C3.aSp=1;C3.aq=AEN.map(e=>()=>spawnA(e[0],e[1],e[2],e[3],e[4],e[5]));C3.aq.unshift(()=>{C3.gov=spawnA(1,30,12,'bruto',1,[[30,12],[38,8],[50,8],[38,8],[30,12],[20,8],[8,8],[20,8],[30,12],[30,26],[30,12]],{s:1.08,hp:260,nome:'Cecília Prado (Governanta)'})})}
+ for(let i=0;i<2&&C3.aq.length;i++){try{C3.aq.shift()()}catch(e){log('guardas da casa: '+e.message,'e')}}}
 /* ---------- beats B1/B2 e saída ---------- */
 function setupA3(){
  const E=id=>EV.find(e=>e.id===id);
@@ -5382,8 +5396,73 @@ function setupB5(){const E=id=>EV.find(e=>e.id===id);buildRain();
   if(id==='C4'){sy('sis','DRA. HELENA: Deixa eu ver essa cabeça, meu filho.',2.6);sy('sis','DRA. HELENA: Isso não é cicatriz de bala nem de faca. Alguém mexeu na sua cabeça e fez bem feito.',4.8);sy('pen','A Agência.',1.8);sy('emmy','Então foi isso que apagaram.',2.6);sy('sis','DR. TOBIAS: Eu posso ajudar... se alguém me prometer que ninguém vai gritar.',3.6)}
   if(id==='C5'){sy('sis','SEU DEODATO: Tem uma entrada de trás pro Poço. Passa por baixo da pedreira.',4);sy('sis','SEU DEODATO: Lá dentro, quem acende a luz é o primeiro a morrer. Aprende a ouvir.',4);S.pistas=S.pistas||[];if(!S.pistas.includes('entrada_fundos'))S.pistas.push('entrada_fundos')}
   if(id==='C6'){sy('sis','JANA: Eu escrevi tudo. Cada nome, cada barco. E o Caio me pediu pra guardar o caderno dele.',4.4);sy('sis','MARCUS: ...Pen? Eu ouvi a sua voz no rádio do Major. Dois anos, Pen.',4);sy('pen','Marcus. Eu tô aqui. Eu tô aqui, mano.',3.6);sy('emmy','Cinco minutos. Eu fico de vigia.',2.8)}}}
+/* ===== PARTE 6 (v130): ATO 4 · PREPARAÇÃO E DESCIDA (B12 e B13). Noite antes no hub (refeição, lição do escuro, loja final, fogueira, escolha de quem desce), sistema do ESCURO (lanterna que chama atenção, escuta, óculos, sinalizador, curativos), trilha de lampiões, cartão FIM DO CAPÍTULO 3. ===== */
+const FINAL_ITEMS=[{k:'ESCURO',it:[{id:'l_lant',n:'LANTERNA',p:60},{id:'l_nvg',n:'ÓCULOS NOTURNOS',p:120},{id:'sin',n:'SINALIZADOR',p:20}]},{k:'CURATIVOS',it:[{id:'c_p',n:'KIT PEQUENO',p:30},{id:'c_g',n:'KIT GRANDE',p:70}]}];
+const EAR=[],LAMPS=[];
+function after(ms,fn){setTimeout(()=>{try{fn()}catch(e){log('cena (cap. 3): '+e.message,'e')}},ms)}
+S.shop3=(id,q)=>{const say=t=>{if(!q)sy('sis',t,3.6)};
+ if(id==='l_lant'){S.hasLamp=1;say('Lanterna: tecla L, botão LANTERNA ou apertar o lado esquerdo (VR). A luz chama atenção.')}
+ else if(id==='l_nvg'){S.hasNvg=1;say('Óculos noturnos: tecla N ou botão ÓCULOS (no VR ligam sozinhos com a lanterna apagada).')}
+ else if(id==='sin'){S.flares=(S.flares|0)+1;try{delete LOJA.own[id]}catch(e){}say('Sinalizador +1 (tecla G).')}
+ else if(id==='c_p'){S.curaP=(S.curaP|0)+1;try{delete LOJA.own[id]}catch(e){}say('Kit pequeno +1 (tecla H).')}
+ else if(id==='c_g'){S.curaG=(S.curaG|0)+1;try{delete LOJA.own[id]}catch(e){}say('Kit grande +1 (tecla H).')}
+ uiTools()};
+function unlockFinalShop(){if(C3.shopX)return;C3.shopX=1;try{const I=LOJA.ITEMS;for(const c of FINAL_ITEMS)if(!I.some(x=>x.k===c.k))I.push(c)}catch(e){log('loja final: '+e.message,'e')}}
+function ensureLights(){if(C3.lamp)return;try{const sp=new T.SpotLight(0xfff0d0,0,28,.5,.6,1.4);sp.position.set(0,-.1,0);sp.target.position.set(0,0,-6);if(!camera.parent)scene.add(camera);camera.add(sp);camera.add(sp.target);C3.lamp=sp;
+ C3.fl=[0,1].map(()=>{const l=new T.PointLight(0xff3a2a,0,20,2);scene.add(l);return{l,t:0,m:null}});
+ for(let i=0;i<24;i++){const m=new T.Mesh(new T.SphereGeometry(.18,8,6),new T.MeshBasicMaterial({color:0xff3a2a,depthTest:false,transparent:true,opacity:.85}));m.renderOrder=999;m.visible=false;scene.add(m);EAR.push(m)}}catch(e){log('luzes do escuro: '+e.message,'e')}}
+function envDark(){S.setAct3(S.act3|0);if(S.nvgOn){scene.traverse(o=>{if(o.isHemisphereLight){o.color.set(0x66ff88);o.groundColor.set(0x113318);o.intensity=1}});scene.fog.color.set(0x0a2410);sun.intensity=0}}
+function toggleLamp(){if(!S.hasLamp||!C3.lamp||S.map!=='B')return;S.lampOn=!S.lampOn;C3.lamp.intensity=S.lampOn?2.4:0;sy('sis',S.lampOn?'Lanterna acesa. Quem enxerga, é visto.':'Lanterna apagada.',2)}
+function toggleNvg(){if(!S.hasNvg||S.map!=='B')return;S.nvgOn=!S.nvgOn;envDark()}
+function listen(){if(!S.noite||S.map!=='B'||C3.earCd>0)return;C3.earCd=8;C3.earT=2.6;sy('sis','Você prende a respiração e escuta...',1.6)}
+function throwFlare(){if(S.map!=='B'||(S.flares|0)<1||!C3.fl)return;S.flares--;const p=rig.position,d=new T.Vector3();camera.getWorldDirection(d);d.y=0;d.normalize();const x=p.x+d.x*3.5,z=p.z+d.z*3.5,y=gy(x,z),s=C3.fl.find(q=>q.t<=0)||C3.fl[0];
+ if(s.m)scene.remove(s.m);const m=new T.Mesh(new T.CylinderGeometry(.03,.03,.25,6),new T.MeshBasicMaterial({color:0xff3322}));m.position.set(x,y+.13,z);scene.add(m);s.m=m;s.t=40;s.l.position.set(x,y+1,z);uiTools()}
+function useHeal(){const miss=PL.mx-PL.hp;if(miss<2)return;if((S.curaP|0)>0&&(miss<=45||!((S.curaG|0)>0))){S.curaP--;PL.hp=Math.min(PL.mx,PL.hp+40)}else if((S.curaG|0)>0){S.curaG--;PL.hp=PL.mx}else return;sy('sis','Curativo usado.',1.8);uiTools()}
+function darkTick(dt,p){if(C3.earCd>0)C3.earCd-=dt;
+ if(C3.earT>0){C3.earT-=dt;let k=0;for(const o of K().P2.en){if(o.dead||!o.mesh||k>=EAR.length)continue;if(Math.hypot(o.mesh.position.x-p.x,o.mesh.position.z-p.z)<32){const m=EAR[k++];m.visible=true;m.position.set(o.mesh.position.x,o.mesh.position.y+1.2,o.mesh.position.z)}}for(;k<EAR.length;k++)EAR[k].visible=false}else for(const m of EAR)m.visible=false;
+ if(C3.fl)for(const s of C3.fl){if(s.t>0){s.t-=dt;s.l.intensity=1.6*Math.min(1,s.t/4)*(.85+.15*Math.sin(C3.t*17));if(s.t<=0&&s.m){scene.remove(s.m);s.m=null;s.l.intensity=0}}}
+ if((C3.dt2=(C3.dt2||0)+dt)>.5){C3.dt2=0;const pen=(S.lampOn&&S.act3===2)?1.8:1;for(const o of K().P2.en){if(o.dm0===undefined)o.dm0=o.dm||1;o.dm=o.dm0*pen}}}
+/* botões para celular/PC (no VR: aperto do lado esquerdo = lanterna, lado direito = escuta) */
+function buildTools(){try{const w=document.createElement('div');w.style.cssText='position:fixed;z-index:21;right:12px;bottom:calc(120px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:6px';document.body.appendChild(w);C3.ui=w;C3.btn={};
+ const mk=(id,t,fn)=>{const b=document.createElement('button');b.textContent=t;b.style.cssText='padding:9px 12px;font:700 12px system-ui;background:#222d;color:#fff;border:0;border-radius:8px;display:none';b.addEventListener('pointerdown',e=>{e.preventDefault();fn()});w.appendChild(b);C3.btn[id]=b};
+ mk('lamp','LANTERNA',toggleLamp);mk('nvg','ÓCULOS',toggleNvg);mk('ear','ESCUTAR',listen);mk('flare','SINALIZADOR',throwFlare);mk('heal','CURAR',useHeal);
+ addEventListener('keydown',e=>{if(!S.on||S.chap!==3)return;if(e.code==='KeyL')toggleLamp();else if(e.code==='KeyN')toggleNvg();else if(e.code==='KeyQ')listen();else if(e.code==='KeyG')throwFlare();else if(e.code==='KeyH')useHeal()});
+ try{renderer.xr.addEventListener('sessionstart',()=>{const s=renderer.xr.getSession();s.addEventListener('squeezestart',e=>{if(!S.on||S.chap!==3)return;if(e.inputSource.handedness==='left')toggleLamp();else listen()});w.style.display='none'});renderer.xr.addEventListener('sessionend',()=>w.style.display='flex')}catch(e){}}catch(e){log('botões do escuro: '+e.message,'e')}}
+function uiTools(){const b=C3.btn;if(!b)return;const B=S.map==='B';b.lamp.style.display=B&&S.hasLamp?'block':'none';b.nvg.style.display=B&&S.hasNvg?'block':'none';b.ear.style.display=B&&S.noite?'block':'none';b.flare.style.display=B&&(S.flares|0)>0?'block':'none';b.flare.textContent='SINALIZADOR ×'+(S.flares|0);const k=(S.curaP|0)+(S.curaG|0);b.heal.style.display=B&&k>0?'block':'none';b.heal.textContent='CURAR ×'+k}
+/* ---------- trilha de lampiões do hub até a boca do Poço ---------- */
+function buildLamps(){const pts=[];let acc=0;for(let k=2;k<MAIN.length-1;k++){const a=MAIN[k],b=MAIN[k+1],dx=b[0]-a[0],dz=b[1]-a[1],L=Math.hypot(dx,dz),nx=-dz/L,nz=dx/L;for(let t=acc;t<L;t+=16){const x=a[0]+dx*t/L,z=a[1]+dz*t/L;for(const s of[-1,1]){const px=x+nx*2.6*s,pz=z+nz*2.6*s,y=gy(px,pz);if(y>1.1)pts.push([px,y,pz])}}acc=((acc+Math.ceil((L-acc)/16)*16)-L)}
+ const D=new T.Object3D(),n=pts.length,post=new T.InstancedMesh(new T.BoxGeometry(.08,1.7,.08),M(0x3a2a1c),n),glow=new T.InstancedMesh(new T.SphereGeometry(.17,8,6),new T.MeshBasicMaterial({color:0xffc060}),n);
+ pts.forEach((q,i)=>{D.position.set(q[0],q[1]+.85,q[2]);D.updateMatrix();post.setMatrixAt(i,D.matrix);D.position.set(q[0],q[1]+1.8,q[2]);D.updateMatrix();glow.setMatrixAt(i,D.matrix)});
+ post.frustumCulled=false;glow.frustumCulled=false;post.visible=false;glow.visible=false;scene.add(post,glow);LAMPS.push(post,glow);return n}
+function showLamps(){LAMPS.forEach(m=>m.visible=true)}
+/* ---------- B12: a noite antes ---------- */
+function startNight(){if(S.noite)return;S.noite=1;advanceAct(2);unlockFinalShop();ensureLights();uiTools();
+ sy('pen','Noite fechada. A última antes do Poço. O povo se juntou todo no acampamento.',4.6);
+ sy('sis','DONA NEIDE: Come. Ninguém desce de barriga vazia.',3.2);after(7000,()=>{PL.hp=PL.mx});
+ sy('sis','SEU DEODATO: Lá embaixo é escuro de verdade. No escuro, quem acende a luz é o primeiro a morrer. Aprende a ouvir.',6);
+ sy('sis','SEU DEODATO: Prende a respiração e escuta. (Tecla Q, botão ESCUTAR ou apertar o lado direito no VR.)',5.4);
+ sy('pen','O Comerciante abriu estoque novo: lanterna, óculos noturnos, sinalizadores e curativos.',4.6);
+ sy('emmy','Não vou agradecer. Mas se eu cair lá embaixo, você não volta sem ele. Não é pedido.',5.4);
+ sy('pen','Eu fico na linha até o último chiado. Vão. E voltem, porra.',4.6);
+ after(40000,chooseCompanions)}
+const COMP=[['marreta','Marreta','C2'],['tiao','Tião','C3'],['deodato','Seu Deodato','C5'],['helena','Dra. Helena','C4'],['marcus','Marcus','C6']];
+function chooseCompanions(){const av=COMP.filter(c=>{const g=C3.cg.find(x=>x.id===c[2]);return g&&g.open});
+ const done=l=>{S.aliadosDescem=l;S.descida=1;showLamps();S.save3(0);sy('pen','Os libertos estão acendendo lampiões dos dois lados da trilha. É o único trecho claro da ilha.',5)};
+ if(isXR()||av.length<2){done(av.slice(0,2).map(c=>c[0]));return}
+ const sel=[],w=document.createElement('div');w.style.cssText='position:fixed;inset:0;z-index:40;background:#000c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#fff;font:600 16px system-ui';w.innerHTML='<div style="font:700 22px system-ui;margin-bottom:6px">Quem desce com vocês?</div><div style="opacity:.7;margin-bottom:8px">Escolha até 2 (valerá no capítulo 4)</div>';
+ const ok=document.createElement('button');ok.textContent='CONFIRMAR';ok.style.cssText='margin-top:10px;padding:10px 22px;font:700 16px system-ui;border:0;border-radius:8px;background:#7a1a14;color:#fff';
+ for(const c of av){const b=document.createElement('button');b.textContent=c[1];b.style.cssText='padding:10px 22px;font:600 16px system-ui;border:2px solid #666;border-radius:8px;background:#222;color:#fff;min-width:200px';b.addEventListener('pointerdown',e=>{e.preventDefault();const i=sel.indexOf(c[0]);if(i>=0){sel.splice(i,1);b.style.borderColor='#666'}else if(sel.length<2){sel.push(c[0]);b.style.borderColor='#e8c35a'}});w.appendChild(b)}
+ ok.addEventListener('pointerdown',e=>{e.preventDefault();w.remove();done(sel.length?sel:av.slice(0,2).map(c=>c[0]))});w.appendChild(ok);document.body.appendChild(w)}
+/* ---------- B13: descida e fim do capítulo ---------- */
+function endChapter(){if(C3.end)return;C3.end=1;sy('emmy','Eu vou do seu lado.',3);
+ after(3200,()=>{try{X().endCard('FIM DO CAP\u00cdTULO 3','Verdade e d\u00edvida','progresso salvo')}catch(e){log('cart\u00e3o final (cap. 3): '+e.message,'e')}sy('sis','ZELADOR (do escuro): Bem-vindos \u00e0 minha casa de verdade.',5);S.save3(1);S.exportJson3()})}
+function tickB6(dt,p){if(S.majorMorto&&!S.noite&&Math.hypot(p.x-PT.hub[0],p.z-PT.hub[1])<30)startNight();darkTick(dt,p);if((C3.ut=(C3.ut||0)+dt)>1){C3.ut=0;uiTools()}}
+function setupB6(){const E=id=>EV.find(e=>e.id===id);buildTools();try{buildLamps()}catch(e){log('lampiões: '+e.message,'e')}
+ const pc=E('poco');pc.name='';pc.fn=()=>{const e=pc;S.z3=10;dbg('F10 · boca do Poço');
+  if(!S.descida){setTimeout(()=>{e.done=0},6000);sy('pen','Ainda não. Voltem ao acampamento. Vocês precisam estar prontos.',3.6);return}
+  endChapter()}}
 /* ---------- salvamento próprio do capítulo 3 (campos do plano; não mexe nos saves 1 e 2) ---------- */
-S.snap3=done=>({jogo:'RES',capitulo:3,versao:'v129',loja:{own:Object.assign({},LOJA.own),colete:VST.lv|0,faca:S.kn?KTY:-1},salvoEm:new Date().toISOString(),concluido:!!done,ponto:{x:S.cp.x,z:S.cp.z,yaw:S.cp.yaw,name:S.cp.name,m:S.cp.m||'B',f:S.cp.f},eventos:EV.filter(e=>e.done).map(e=>e.id),dinheiro:S.money||0,vida:Math.round(PL.hp),zona:S.z3||1,ato:S.act3|0,libertou:S.freed===undefined?null:S.freed,municao:{pente:G.mag,ferrolho:!!G.ch,pentes:!!G.magIn,bolso:pocket.slice()},salvos:S.salvos|0,gaiolas:C3.cg.filter(c=>c.open).map(c=>c.id),chefes:BOSS.filter(b=>b.dd).map(b=>b.id),sinalPen:S.sinalPen|0,lidos:[...READ],fogo:C3.fireOn?1:0,salvosIds:S.salvosIds||[],aliadosDescem:S.aliadosDescem||[],pistas:S.pistas||[],caioVivo:S.caioVivo|0,irmaoPenSalvo:S.irmaoPenSalvo|0,majorMorto:S.majorMorto|0,comerciante:S.comerc||'poupou'});
+S.snap3=done=>({jogo:'RES',capitulo:3,versao:'v132',loja:{own:Object.assign({},LOJA.own),colete:VST.lv|0,faca:S.kn?KTY:-1},salvoEm:new Date().toISOString(),concluido:!!done,ponto:{x:S.cp.x,z:S.cp.z,yaw:S.cp.yaw,name:S.cp.name,m:S.cp.m||'B',f:S.cp.f},eventos:EV.filter(e=>e.done&&e.id!=='poco'&&e.id!=='a_saida').map(e=>e.id),dinheiro:S.money||0,vida:Math.round(PL.hp),zona:S.z3||1,ato:S.act3|0,libertou:S.freed===undefined?null:S.freed,municao:{pente:G.mag,ferrolho:!!G.ch,pentes:!!G.magIn,bolso:pocket.slice()},salvos:S.salvos|0,gaiolas:C3.cg.filter(c=>c.open).map(c=>c.id),noite:S.noite|0,descida:S.descida|0,consumiveis:{sinal:S.flares|0,curaP:S.curaP|0,curaG:S.curaG|0},chefes:BOSS.filter(b=>b.dd).map(b=>b.id),sinalPen:S.sinalPen|0,lidos:[...READ],fogo:C3.fireOn?1:0,salvosIds:S.salvosIds||[],aliadosDescem:S.aliadosDescem||[],pistas:S.pistas||[],caioVivo:S.caioVivo|0,irmaoPenSalvo:S.irmaoPenSalvo|0,majorMorto:S.majorMorto|0,comerciante:S.comerc||'poupou'});
 S.save3=done=>{if(S.chap!==3||!S.on||S.dd>=0||(!done&&S.cp.name==='Pátio e portão'))return;try{localStorage.setItem('res_save_c3',JSON.stringify(S.snap3(done)))}catch(e){}};
 S.exportJson3=()=>{try{const b=new Blob([JSON.stringify(S.snap3(0),null,1)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='res_save_c3.json';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},3000)}catch(e){log('salvar json (cap. 3): '+e.message,'e')}};
 /* R7: aplica SÓ o que veio no save (campo ausente nunca zera o que já existe). Serve para o save do cap. 2 (herança) e para o do cap. 3 (continuar). */
@@ -5397,7 +5476,7 @@ function applyPend3(){const d=S.pend;S.pend=null;let own=false;
  if(d&&d.capitulo===3){own=true;try{
   if(d.ponto&&isFinite(d.ponto.x)&&isFinite(d.ponto.z))S.cp={x:+d.ponto.x,z:+d.ponto.z,yaw:+d.ponto.yaw||0,name:String(d.ponto.name||'Porteira'),m:d.ponto.m==='A'?'A':'B',f:d.ponto.f};
   const ids=new Set(Array.isArray(d.eventos)?d.eventos:[]);for(const e of EV)if(ids.has(e.id))e.done=1;
-  S.z3=+d.zona||1;S.salvos=d.salvos|0;S.salvosIds=Array.isArray(d.salvosIds)?d.salvosIds:[];S.aliadosDescem=Array.isArray(d.aliadosDescem)?d.aliadosDescem:[];S.pistas=Array.isArray(d.pistas)?d.pistas:[];S.caioVivo=d.caioVivo|0;S.irmaoPenSalvo=d.irmaoPenSalvo|0;S.majorMorto=d.majorMorto|0;S.comerc=d.comerciante||'poupou';S.act3=d.ato|0;for(const id of(Array.isArray(d.chefes)?d.chefes:[])){const b=BOSS.find(x=>x.id===id);if(b){b.on=1;b.dd=1}}S.sinalPen=d.sinalPen|0;S.gaiolas=Array.isArray(d.gaiolas)?d.gaiolas:[];for(const id of(Array.isArray(d.lidos)?d.lidos:[]))READ.add(id);if(d.fogo){C3.fireOn=1;C3.ft=0;S.fire3(true)}for(const id of S.gaiolas){const c=C3.cg.find(x=>x.id===id);if(c)freeCage(c,true)}
+  S.z3=+d.zona||1;S.salvos=d.salvos|0;S.salvosIds=Array.isArray(d.salvosIds)?d.salvosIds:[];S.aliadosDescem=Array.isArray(d.aliadosDescem)?d.aliadosDescem:[];S.pistas=Array.isArray(d.pistas)?d.pistas:[];S.caioVivo=d.caioVivo|0;S.irmaoPenSalvo=d.irmaoPenSalvo|0;S.majorMorto=d.majorMorto|0;S.comerc=d.comerciante||'poupou';S.act3=d.ato|0;S.noite=d.noite|0;S.descida=d.descida|0;{const cs=d.consumiveis||{};S.flares=cs.sinal|0;S.curaP=cs.curaP|0;S.curaG=cs.curaG|0}if(S.noite){unlockFinalShop();ensureLights()}if(S.descida)showLamps();for(const id of(Array.isArray(d.chefes)?d.chefes:[])){const b=BOSS.find(x=>x.id===id);if(b){b.on=1;b.dd=1}}S.sinalPen=d.sinalPen|0;S.gaiolas=Array.isArray(d.gaiolas)?d.gaiolas:[];for(const id of(Array.isArray(d.lidos)?d.lidos:[]))READ.add(id);if(d.fogo){C3.fireOn=1;C3.ft=0;S.fire3(true)}for(const id of S.gaiolas){const c=C3.cg.find(x=>x.id===id);if(c)freeCage(c,true)}
   applyState(d);log('salvamento do cap. 3 carregado: '+S.cp.name)}catch(e){log('carregar salvamento (cap. 3): '+e.message,'e')}return}
  /* começo do capítulo: herda TUDO do save do capítulo 2 (armas, compras, munição, grana, vida); sem save válido = kit padrão */
  let c2=null;try{c2=JSON.parse(localStorage.getItem('res_save_c2'))}catch(e){}
@@ -5462,15 +5541,15 @@ for(let i=1;i<=24;i++){if(i===11){L2.push('c2_emmy_011_a','c2_emmy_011_b')}else 
 L2.push('c2_merc_001','c2_merc_002','c2_merc_003','c2_merc_004_a','c2_merc_004_b','c2_pris_001','c2_pris_002','c2_pris_003');
 /* pendentes ja conhecidos (bloqueados pelo filtro da Arena IA): nao viram alerta vermelho */
 const ESP=['c1_inimigo_014','c2_emmy_009','c2_emmy_014','c2_emmy_021'];
-const L=L1.concat(L2);
+const L3=["c3_zelador_001", "c3_emmy_001", "c3_pen_001", "c3_neide_001", "c3_emmy_002", "c3_emmy_003", "c3_pen_002", "c3_emmy_004", "c3_zelador_002", "c3_zelador_003", "c3_emmy_005", "c3_emmy_006", "c3_emmy_007", "c3_pen_003", "c3_emmy_008", "c3_pen_004", "c3_emmy_009", "c3_pen_005", "c3_comerciante_001", "c3_pen_006", "c3_emmy_010", "c3_neide_002", "c3_pen_007", "c3_zequiel_001", "c3_emmy_011", "c3_major_001", "c3_emmy_012", "c3_pen_008", "c3_marreta_001", "c3_emmy_013", "c3_tiao_001", "c3_chica_001", "c3_miguel_001", "c3_pen_009", "c3_emmy_014", "c3_pen_010", "c3_major_002", "c3_emmy_015", "c3_pen_011", "c3_pen_012", "c3_emmy_016", "c3_pen_013", "c3_emmy_017", "c3_pen_014", "c3_emmy_018", "c3_pen_015", "c3_helena_001", "c3_helena_002", "c3_pen_016", "c3_emmy_019", "c3_tobias_001", "c3_deodato_001", "c3_deodato_002", "c3_jana_001", "c3_marcus_001", "c3_pen_017", "c3_emmy_020", "c3_pen_018", "c3_neide_003", "c3_deodato_003", "c3_deodato_004", "c3_pen_019", "c3_emmy_021", "c3_pen_020", "c3_pen_021", "c3_emmy_022", "c3_zelador_004", "c3_pen_022", "c3_emmy_023", "c3_pen_023", "c3_pen_024", "c3_emmy_024", "c3_pen_025", "c3_emmy_025", "c3_pen_026", "c3_emmy_026", "c3_emmy_027", "c3_pen_027", "c3_pen_028", "c3_pen_029", "c3_emmy_028", "c3_zelador_005", "c3_emmy_029", "c3_pen_030", "c3_emmy_030", "c3_pen_031", "c3_emmy_031", "c3_jana_002", "c3_emmy_032", "c3_emmy_033", "c3_pen_032", "c3_emmy_034", "c3_emmy_035"];const L=L1.concat(L2,L3);
 box.className='ok';box.textContent='Verificando vozes…';
 const chk=n=>fetch('vozes/'+n+'.mp3',{method:'HEAD',cache:'no-store'}).then(r=>r.ok).catch(()=>false);
 Promise.all(L.map(chk)).then(r=>{const has={};L.forEach((n,i)=>has[n]=r[i]);
-const c=l=>l.filter(n=>has[n]).length,ok1=c(L1),ok2=c(L2),miss=L.filter(n=>!has[n]),bad=miss.filter(n=>ESP.indexOf(n)<0),exp=miss.filter(n=>ESP.indexOf(n)>=0);
-const sh=n=>n.replace('c1_','c1:').replace('c2_','c2:');
-if(ok1+ok2===0){box.className='bad';box.textContent='⚠ VOZES NÃO CARREGADAS: pasta "vozes/" não encontrada ao lado do HTML. O jogo vai rodar sem falas.'}
-else if(bad.length){box.className='bad';box.textContent='⚠ Vozes incompletas. Cap. 1: '+ok1+' de '+L1.length+' · Cap. 2: '+ok2+' de '+L2.length+'. Faltam: '+bad.map(sh).join(', ')}
-else{box.className='ok';box.textContent='Vozes carregadas. Cap. 1: '+ok1+' de '+L1.length+' · Cap. 2: '+ok2+' de '+L2.length+(exp.length?' (faltam, já esperados: '+exp.map(sh).join(', ')+')':'')}
+const c=l=>l.filter(n=>has[n]).length,ok1=c(L1),ok2=c(L2),ok3=c(L3),miss=L.filter(n=>!has[n]),bad=miss.filter(n=>ESP.indexOf(n)<0&&!(ok3===0&&L3.indexOf(n)>=0)),exp=miss.filter(n=>ESP.indexOf(n)>=0);
+const sh=n=>n.replace('c1_','c1:').replace('c2_','c2:').replace('c3_','c3:');
+if(ok1+ok2+ok3===0){box.className='bad';box.textContent='⚠ VOZES NÃO CARREGADAS: pasta "vozes/" não encontrada ao lado do HTML. O jogo vai rodar sem falas.'}
+else if(bad.length){box.className='bad';box.textContent='⚠ Vozes incompletas. Cap. 1: '+ok1+' de '+L1.length+' · Cap. 2: '+ok2+' de '+L2.length+' · Cap. 3: '+ok3+' de '+L3.length+'. Faltam: '+bad.map(sh).join(', ')}
+else{box.className='ok';box.textContent='Vozes carregadas. Cap. 1: '+ok1+' de '+L1.length+' · Cap. 2: '+ok2+' de '+L2.length+' · Cap. 3: '+ok3+' de '+L3.length+(ok3===0?' (ainda sem vozes)':'')+(exp.length?' (faltam, já esperados: '+exp.map(sh).join(', ')+')':'')}
 })})();
 </script>
 </body></html>
